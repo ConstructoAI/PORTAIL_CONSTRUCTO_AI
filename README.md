@@ -40,7 +40,7 @@ Système Électronique d'Appel d'Offres Public
 - Système d'évaluations 5 étoiles
 - Dashboard analytics avec KPIs
 
-### 🏗️ **B2B Construction Québec** - [b2b-pbr8.constructoai.ca](https://b2b-pbr8.constructoai.ca/)
+### 🏗️ **B2B Construction Québec** - [b2b.constructoai.ca](https://b2b.constructoai.ca/)
 Plateforme B2B de gestion des soumissions pour entreprises RBQ
 - Workflow d'approbation intelligent en 5 étapes
 - Évaluation multi-critères automatisée
