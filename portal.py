@@ -253,29 +253,94 @@ if view_mode == "Cartes":
         with cols[idx % 3]:
             # Carte d'application avec style professionnel sobre
             st.markdown(f"""
-                <div class="app-card" style="background: white; border: 1px solid #E5E7EB; border-radius: 12px; padding: 0; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); transition: all 0.3s;">
-                    <div class="app-card-inner" style="background: white; border-radius: 12px; padding: 2rem; position: relative;">
-                        <div class="app-badge" style="position: absolute; top: 1rem; right: 1rem; background: #F3F4F6; color: #6B7280; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.75rem; font-weight: 600; border: 1px solid #E5E7EB;">{app['badge']}</div>
-                        <div class="app-icon" style="color: {app['color']}; font-size: 3rem; margin-bottom: 1rem;">{app['icon']}</div>
-                        <h3 class="app-name" style="color: #1F2937; font-size: 1.5rem; font-weight: 700; margin-bottom: 0.5rem;">{app['name']}</h3>
-                        <p class="app-description" style="color: #6B7280; font-size: 0.95rem; line-height: 1.6; margin-bottom: 1rem; min-height: 3rem;">{app['description']}</p>
-                        <div class="app-features" style="margin-bottom: 1.5rem;">
-                            {''.join([f'<span class="feature-tag" style="background: #F9FAFB; color: #374151; padding: 0.25rem 0.5rem; border-radius: 6px; font-size: 0.75rem; margin-right: 0.5rem; display: inline-block; margin-bottom: 0.5rem; border: 1px solid #E5E7EB;">✓ {feature}</span>' for feature in app['features'][:2]])}
-                        </div>
-                        <a href="{app['url']}" target="_blank" class="app-button" style="display: flex; align-items: center; justify-content: center; width: 100%; padding: 0.75rem 1.5rem; background: #3B82F6; color: white; border-radius: 8px; text-decoration: none; font-weight: 600; transition: all 0.3s; border: none;" onmouseover="this.style.background='#2563EB'; this.style.transform='translateY(-1px)'" onmouseout="this.style.background='#3B82F6'; this.style.transform='translateY(0)'">
-                            <span>Accéder</span>
-                            <span class="button-arrow" style="margin-left: 0.5rem;">→</span>
-                        </a>
-                        <div class="app-status" style="display: flex; align-items: center; gap: 0.5rem; margin-top: 1rem;">
-                            <span class="status-dot" style="width: 8px; height: 8px; border-radius: 50%; background: #10B981;"></span>
-                            <span style="color: #6B7280; font-size: 0.875rem;">En ligne</span>
-                        </div>
+                <div class="professional-card" style="
+                    background: white; 
+                    border: 1px solid #E5E7EB; 
+                    border-radius: 12px; 
+                    padding: 2rem; 
+                    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); 
+                    transition: all 0.3s;
+                    position: relative;
+                    height: auto;
+                    margin-bottom: 2rem;
+                " onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 25px rgba(0, 0, 0, 0.12)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 1px 3px rgba(0, 0, 0, 0.1)'">
+                    
+                    <div class="card-badge" style="
+                        position: absolute; 
+                        top: 1rem; 
+                        right: 1rem; 
+                        background: #F3F4F6; 
+                        color: #6B7280; 
+                        padding: 0.25rem 0.75rem; 
+                        border-radius: 20px; 
+                        font-size: 0.75rem; 
+                        font-weight: 600; 
+                        border: 1px solid #E5E7EB;
+                    ">{app['badge']}</div>
+                    
+                    <div class="card-icon" style="
+                        color: {app['color']}; 
+                        font-size: 3rem; 
+                        margin-bottom: 1rem; 
+                        display: block;
+                    ">{app['icon']}</div>
+                    
+                    <h3 class="card-title" style="
+                        color: #1F2937 !important; 
+                        font-size: 1.25rem; 
+                        font-weight: 700; 
+                        margin-bottom: 0.75rem;
+                        line-height: 1.2;
+                    ">{app['name']}</h3>
+                    
+                    <p class="card-description" style="
+                        color: #6B7280 !important; 
+                        font-size: 0.9rem; 
+                        line-height: 1.5; 
+                        margin-bottom: 1rem;
+                        display: block;
+                        min-height: 2.5rem;
+                    ">{app['description']}</p>
+                    
+                    <div class="card-features" style="margin-bottom: 1.5rem;">
+                        {''.join([f'''<span style="
+                            background: #F9FAFB; 
+                            color: #374151; 
+                            padding: 0.25rem 0.5rem; 
+                            border-radius: 6px; 
+                            font-size: 0.7rem; 
+                            margin-right: 0.5rem; 
+                            margin-bottom: 0.5rem;
+                            display: inline-block; 
+                            border: 1px solid #E5E7EB;
+                        ">✓ {feature}</span>''' for feature in app['features'][:2]])}
+                    </div>
+                    
+                    <a href="{app['url']}" target="_blank" style="
+                        display: flex; 
+                        align-items: center; 
+                        justify-content: center; 
+                        width: 100%; 
+                        padding: 0.75rem 1.5rem; 
+                        background: #3B82F6; 
+                        color: white !important; 
+                        border-radius: 8px; 
+                        text-decoration: none; 
+                        font-weight: 600; 
+                        transition: all 0.3s; 
+                        border: none;
+                        margin-bottom: 1rem;
+                    " onmouseover="this.style.background='#2563EB'; this.style.transform='translateY(-1px)'" onmouseout="this.style.background='#3B82F6'; this.style.transform='translateY(0)'">
+                        <span>Accéder</span>
+                        <span style="margin-left: 0.5rem;">→</span>
+                    </a>
+                    
+                    <div style="display: flex; align-items: center; gap: 0.5rem;">
+                        <span style="width: 8px; height: 8px; border-radius: 50%; background: #10B981;"></span>
+                        <span style="color: #6B7280; font-size: 0.875rem;">En ligne</span>
                     </div>
                 </div>
             """, unsafe_allow_html=True)
-            
-            # Espacement entre les cartes
-            st.markdown("<div style='margin-bottom: 2rem;'></div>", unsafe_allow_html=True)
 
 else:
     # Vue en liste détaillée
