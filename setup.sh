@@ -5,24 +5,28 @@
 mkdir -p ~/.streamlit/
 
 # Créer le fichier config.toml
-echo "\
-[general]\n\
-email = \"info@constructoai.ca\"\n\
-\n\
-[server]\n\
-headless = true\n\
-enableCORS = false\n\
-port = \$PORT\n\
-\n\
-[theme]\n\
-primaryColor = \"#3B82F6\"\n\
-backgroundColor = \"#FFFFFF\"\n\
-secondaryBackgroundColor = \"#F0F9FF\"\n\
-textColor = \"#1F2937\"\n\
-font = \"sans serif\"\n\
-" > ~/.streamlit/config.toml
+cat > ~/.streamlit/config.toml <<EOF
+[server]
+headless = true
+port = \$PORT
+enableCORS = false
+enableXsrfProtection = true
+
+[browser]
+gatherUsageStats = false
+serverAddress = "0.0.0.0"
+
+[theme]
+primaryColor = "#3B82F6"
+backgroundColor = "#FFFFFF"
+secondaryBackgroundColor = "#F0F9FF"
+textColor = "#1F2937"
+font = "sans serif"
+EOF
 
 # Créer le fichier credentials.toml vide
-echo "\
-[general]\n\
-" > ~/.streamlit/credentials.toml
+cat > ~/.streamlit/credentials.toml <<EOF
+[general]
+EOF
+
+echo "Configuration Streamlit créée avec succès"

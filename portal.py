@@ -16,9 +16,14 @@ st.set_page_config(
 # Fonction pour charger le CSS local
 def load_css(file_name):
     """Charge les styles CSS depuis un fichier local."""
-    if os.path.exists(file_name):
-        with open(file_name, "r", encoding="utf-8") as f:
-            st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
+    try:
+        if os.path.exists(file_name):
+            with open(file_name, "r", encoding="utf-8") as f:
+                st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
+        else:
+            print(f"Warning: CSS file {file_name} not found")
+    except Exception as e:
+        print(f"Error loading CSS: {e}")
 
 # Chargement du CSS
 load_css("style_portal.css")
