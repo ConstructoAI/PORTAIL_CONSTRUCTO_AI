@@ -72,15 +72,15 @@ APPLICATIONS = [
     {
         "id": "seaop",
         "name": "SEAOP",
-        "icon": "🌊",
+        "icon": "📊",
         "url": "https://seaop.constructoai.ca/",
-        "description": "Optimisation des opérations et processus de construction",
-        "features": ["Optimisation workflow", "Analyse performance", "Automatisation", "KPIs temps réel"],
+        "description": "Système Électronique d'Appel d'Offres Public - Plateforme de mise en relation clients-entrepreneurs",
+        "features": ["Appels d'offres publics", "Chat temps réel", "Évaluations 5 étoiles", "Dashboard analytics"],
         "status": "production",
-        "category": "optimisation",
+        "category": "appels-offres",
         "color": "#06B6D4",
         "gradient": "linear-gradient(135deg, #06B6D4 0%, #0891B2 100%)",
-        "badge": "⚡ EFFICACITÉ"
+        "badge": "🏆 APPELS D'OFFRES"
     },
     {
         "id": "b2b-pbr8",
@@ -191,7 +191,7 @@ with col2:
         "expertise": "🏗️ Expertise",
         "estimation": "📐 Estimation",
         "gestion": "💼 Gestion",
-        "optimisation": "⚡ Optimisation",
+        "appels-offres": "📊 Appels d'Offres",
         "collaboration": "🤝 Collaboration",
         "client": "👥 Client",
         "documentation": "📄 Documentation"

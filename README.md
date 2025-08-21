@@ -33,12 +33,12 @@ Système de gestion intégré pour entreprises
 - Planning des ressources
 - Tableaux de bord dynamiques
 
-### 🌊 **SEAOP** - [seaop.constructoai.ca](https://seaop.constructoai.ca/)
-Optimisation des opérations et processus
-- Optimisation des workflows
-- Analyse de performance
-- Automatisation intelligente
-- KPIs temps réel
+### 📊 **SEAOP** - [seaop.constructoai.ca](https://seaop.constructoai.ca/)
+Système Électronique d'Appel d'Offres Public
+- Plateforme de mise en relation clients-entrepreneurs
+- Chat en temps réel intégré
+- Système d'évaluations 5 étoiles
+- Dashboard analytics avec KPIs
 
 ### 🤝 **B2B PBR8** - [b2b-pbr8.constructoai.ca](https://b2b-pbr8.constructoai.ca/)
 Plateforme B2B pour collaboration inter-entreprises
