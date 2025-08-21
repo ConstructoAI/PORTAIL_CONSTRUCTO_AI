@@ -245,7 +245,6 @@ section[data-testid="stSidebar"] {
 }
 
 .app-card-inner {
-    background: white;
     border-radius: 14px;
     padding: 2rem;
     height: 100%;

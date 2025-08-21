@@ -252,22 +252,22 @@ if view_mode == "Cartes":
         with cols[idx % 3]:
             # Carte d'application avec style premium
             st.markdown(f"""
-                <div class="app-card" style="background: {app['gradient']};">
-                    <div class="app-card-inner" style="color: white;">
-                        <div class="app-badge" style="background: rgba(255, 255, 255, 0.95); color: {app['color']}; font-weight: 700; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);">{app['badge']}</div>
-                        <div class="app-icon" style="color: white;">{app['icon']}</div>
-                        <h3 class="app-name" style="color: white;">{app['name']}</h3>
-                        <p class="app-description" style="color: rgba(255, 255, 255, 0.95);">{app['description']}</p>
-                        <div class="app-features">
-                            {''.join([f'<span class="feature-tag" style="background: rgba(255, 255, 255, 0.2); color: white;">✓ {feature}</span>' for feature in app['features'][:2]])}
+                <div class="app-card" style="background: {app['gradient']}; padding: 2px; border-radius: 16px;">
+                    <div class="app-card-inner" style="background: {app['gradient']}; border-radius: 14px; padding: 2rem; position: relative;">
+                        <div class="app-badge" style="position: absolute; top: 1rem; right: 1rem; background: rgba(255, 255, 255, 0.95); color: {app['color']}; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.75rem; font-weight: 700; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);">{app['badge']}</div>
+                        <div class="app-icon" style="color: white; font-size: 3rem; margin-bottom: 1rem;">{app['icon']}</div>
+                        <h3 class="app-name" style="color: white; font-size: 1.5rem; font-weight: 700; margin-bottom: 0.5rem;">{app['name']}</h3>
+                        <p class="app-description" style="color: rgba(255, 255, 255, 0.95); font-size: 0.95rem; line-height: 1.6; margin-bottom: 1rem;">{app['description']}</p>
+                        <div class="app-features" style="margin-bottom: 1.5rem;">
+                            {''.join([f'<span class="feature-tag" style="background: rgba(255, 255, 255, 0.2); color: white; padding: 0.25rem 0.5rem; border-radius: 6px; font-size: 0.75rem; margin-right: 0.5rem; display: inline-block; margin-bottom: 0.5rem;">✓ {feature}</span>' for feature in app['features'][:2]])}
                         </div>
-                        <a href="{app['url']}" target="_blank" class="app-button" style="background: rgba(255, 255, 255, 0.2); backdrop-filter: blur(10px); color: white; border: 1px solid rgba(255, 255, 255, 0.3);">
+                        <a href="{app['url']}" target="_blank" class="app-button" style="display: flex; align-items: center; justify-content: center; width: 100%; padding: 0.75rem 1.5rem; background: rgba(255, 255, 255, 0.2); backdrop-filter: blur(10px); color: white; border: 1px solid rgba(255, 255, 255, 0.3); border-radius: 8px; text-decoration: none; font-weight: 600; transition: all 0.3s;">
                             <span>Accéder</span>
-                            <span class="button-arrow">→</span>
+                            <span class="button-arrow" style="margin-left: 0.5rem;">→</span>
                         </a>
-                        <div class="app-status" style="color: white;">
-                            <span class="status-dot" style="background: #10B981; box-shadow: 0 0 10px rgba(16, 185, 129, 0.5);"></span>
-                            <span style="color: rgba(255, 255, 255, 0.9);">En ligne</span>
+                        <div class="app-status" style="display: flex; align-items: center; gap: 0.5rem; margin-top: 1rem; color: white;">
+                            <span class="status-dot" style="width: 8px; height: 8px; border-radius: 50%; background: #10B981; box-shadow: 0 0 10px rgba(16, 185, 129, 0.5);"></span>
+                            <span style="color: rgba(255, 255, 255, 0.9); font-size: 0.875rem;">En ligne</span>
                         </div>
                     </div>
                 </div>
