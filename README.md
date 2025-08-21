@@ -20,18 +20,18 @@ Assistant IA avec 60+ experts spécialisés en construction
 - Export professionnel
 
 ### 📐 **TAKEOFF AI** - [takeoff-ai.constructoai.ca](https://takeoff-ai.constructoai.ca/)
-Système d'estimation et de métrés automatisé
-- Calculs automatiques précis
-- Métrés détaillés
-- Estimations professionnelles
-- Rapports Excel
+Système d'estimation de construction avec IA Claude
+- Visualisation et annotation de plans PDF
+- 5 modes de mesure (distance, surface, périmètre, angle, calibration)
+- Assistant IA Claude intégré pour conseils experts
+- Export rapports CSV/JSON/PDF
 
-### 💼 **ERP AI** - [erp-ai.constructoai.ca](https://erp-ai.constructoai.ca/)
-Système de gestion intégré pour entreprises
-- Gestion de projets complète
-- Suivi budgétaire en temps réel
-- Planning des ressources
-- Tableaux de bord dynamiques
+### 🏭 **ERP AI** - [erp-ai.constructoai.ca](https://erp-ai.constructoai.ca/)
+Solution ERP industrielle complète
+- 61 postes de travail configurés (Soudage, CNC, Assemblage)
+- TimeTracker intégré avec synchronisation temps réel
+- CRM et RH avec gestion des compétences
+- Multi-vues: Dashboard, Kanban, Gantt, Calendrier
 
 ### 📊 **SEAOP** - [seaop.constructoai.ca](https://seaop.constructoai.ca/)
 Système Électronique d'Appel d'Offres Public
@@ -40,19 +40,19 @@ Système Électronique d'Appel d'Offres Public
 - Système d'évaluations 5 étoiles
 - Dashboard analytics avec KPIs
 
-### 🤝 **B2B PBR8** - [b2b-pbr8.constructoai.ca](https://b2b-pbr8.constructoai.ca/)
-Plateforme B2B pour collaboration inter-entreprises
-- Réseau professionnel
-- Échange de documents sécurisé
-- Gestion d'appels d'offres
-- Partenariats stratégiques
+### 🏗️ **B2B Construction Québec** - [b2b-pbr8.constructoai.ca](https://b2b-pbr8.constructoai.ca/)
+Plateforme B2B de gestion des soumissions pour entreprises RBQ
+- Workflow d'approbation intelligent en 5 étapes
+- Évaluation multi-critères automatisée
+- Validation RBQ et certifications
+- Dashboard analytique avec KPIs B2B
 
-### 👥 **C2B CS4P** - [c2b-cs4p.constructoai.ca](https://c2b-cs4p.constructoai.ca/)
-Interface client-entreprise pour services
-- Portail clients intuitif
-- Suivi de projets en direct
-- Communication directe
-- Satisfaction client
+### 🏢 **Portail C2B** - [c2b-cs4p.constructoai.ca](https://c2b-cs4p.constructoai.ca/)
+Portail Client à Entreprise mono-entreprise
+- Réception automatique des demandes clients
+- Création de soumissions personnalisées
+- Dashboard entreprise propriétaire
+- Suivi temps réel et notifications
 
 ### 📋 **Feuille de Soumission** - [constructoai.github.io/FEUILLE_SOUMISSION/](https://constructoai.github.io/FEUILLE_SOUMISSION/)
 Générateur de soumissions professionnelles

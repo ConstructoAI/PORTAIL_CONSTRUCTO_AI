@@ -48,8 +48,8 @@ APPLICATIONS = [
         "name": "TAKEOFF AI",
         "icon": "📐",
         "url": "https://takeoff-ai.constructoai.ca/",
-        "description": "Système d'estimation et de métrés automatisé pour projets de construction",
-        "features": ["Calculs automatiques", "Métrés précis", "Estimations détaillées", "Rapports Excel"],
+        "description": "Système d'estimation de construction avec IA Claude - Visualisation PDF et mesures avancées",
+        "features": ["Visualisation PDF avec annotations", "5 modes de mesure", "Assistant IA Claude intégré", "Export CSV/JSON/PDF"],
         "status": "production",
         "category": "estimation",
         "color": "#10B981",
@@ -59,15 +59,15 @@ APPLICATIONS = [
     {
         "id": "erp-ai",
         "name": "ERP AI",
-        "icon": "💼",
+        "icon": "🏭",
         "url": "https://erp-ai.constructoai.ca/",
-        "description": "Système de gestion intégré pour entreprises de construction",
-        "features": ["Gestion projets", "Suivi budgétaire", "Planning ressources", "Tableaux de bord"],
+        "description": "Solution ERP complète de gestion industrielle avec 61 postes de travail et TimeTracker intégré",
+        "features": ["61 postes de travail configurés", "TimeTracker temps réel", "CRM et RH intégrés", "Multi-vues: Dashboard, Kanban, Gantt"],
         "status": "production",
         "category": "gestion",
         "color": "#8B5CF6",
         "gradient": "linear-gradient(135deg, #8B5CF6 0%, #7C3AED 100%)",
-        "badge": "💎 ENTERPRISE"
+        "badge": "🏭 INDUSTRIE 4.0"
     },
     {
         "id": "seaop",
@@ -84,29 +84,29 @@ APPLICATIONS = [
     },
     {
         "id": "b2b-pbr8",
-        "name": "B2B PBR8",
-        "icon": "🤝",
+        "name": "B2B Construction Québec",
+        "icon": "🏗️",
         "url": "https://b2b-pbr8.constructoai.ca/",
-        "description": "Plateforme B2B pour collaboration inter-entreprises construction",
-        "features": ["Réseau professionnel", "Échange documents", "Appels d'offres", "Partenariats"],
+        "description": "Plateforme B2B de gestion des soumissions avec workflow d'approbation intelligent pour entreprises RBQ",
+        "features": ["Workflow d'approbation 5 étapes", "Évaluation multi-critères", "Validation RBQ automatique", "Dashboard analytique B2B"],
         "status": "production",
         "category": "collaboration",
         "color": "#F59E0B",
         "gradient": "linear-gradient(135deg, #F59E0B 0%, #D97706 100%)",
-        "badge": "🔗 RÉSEAU"
+        "badge": "🏗️ B2B CONSTRUCTION"
     },
     {
         "id": "c2b-cs4p",
-        "name": "C2B CS4P",
-        "icon": "👥",
+        "name": "Portail C2B",
+        "icon": "🏢",
         "url": "https://c2b-cs4p.constructoai.ca/",
-        "description": "Interface client-entreprise pour services de construction",
-        "features": ["Portail clients", "Suivi projets", "Communication directe", "Satisfaction client"],
+        "description": "Portail Client à Entreprise - Solution mono-entreprise pour recevoir et gérer les demandes de soumissions",
+        "features": ["Réception demandes clients", "Soumissions personnalisées", "Suivi temps réel", "Dashboard propriétaire"],
         "status": "production",
-        "category": "client",
+        "category": "portail-entreprise",
         "color": "#EC4899",
         "gradient": "linear-gradient(135deg, #EC4899 0%, #DB2777 100%)",
-        "badge": "💬 CLIENT"
+        "badge": "🏢 PORTAIL C2B"
     },
     {
         "id": "feuille-soumission",
@@ -193,7 +193,7 @@ with col2:
         "gestion": "💼 Gestion",
         "appels-offres": "📊 Appels d'Offres",
         "collaboration": "🤝 Collaboration",
-        "client": "👥 Client",
+        "portail-entreprise": "🏢 Portail Entreprise",
         "documentation": "📄 Documentation"
     }
     
