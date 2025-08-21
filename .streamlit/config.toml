@@ -1,37 +1,15 @@
-# .streamlit/config.toml - Configuration Streamlit pour production
+[server]
+headless = true
+enableCORS = true
+enableXsrfProtection = false
+port = 8501
+
+[browser]
+gatherUsageStats = false
 
 [theme]
-# Couleurs principales
 primaryColor = "#3B82F6"
 backgroundColor = "#FFFFFF"
 secondaryBackgroundColor = "#F0F9FF"
 textColor = "#1F2937"
-
-# Police
 font = "sans serif"
-
-[server]
-# Configuration serveur pour Render
-headless = true
-enableCORS = false
-enableXsrfProtection = true
-
-# Performance
-maxUploadSize = 10
-maxMessageSize = 200
-
-[browser]
-# Collecte de données désactivée
-gatherUsageStats = false
-
-# Configuration du navigateur
-serverAddress = "0.0.0.0"
-
-[runner]
-# Magic commands
-magicEnabled = false
-
-[client]
-# Affichage
-showErrorDetails = false
-toolbarMode = "minimal"
