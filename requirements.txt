@@ -1,0 +1,10 @@
+# requirements.txt - Dépendances pour le Portail ConstructoAI
+
+# Framework principal
+streamlit>=1.48.0
+
+# Optionnel - pour des fonctionnalités futures
+# pandas>=2.0.0  # Pour statistiques et données
+# plotly>=5.14.0  # Pour graphiques interactifs
+# requests>=2.31.0  # Pour API calls
+# python-dotenv>=1.0.0  # Pour variables d'environnement

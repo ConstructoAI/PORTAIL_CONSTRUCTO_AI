@@ -1,0 +1,13 @@
+# render.yaml - Configuration pour déploiement sur Render
+services:
+  - type: web
+    name: portail-constructoai
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: streamlit run portal.py --server.port=$PORT --server.address=0.0.0.0
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.0
+    healthCheckPath: /
+    autoDeploy: true
+    plan: free  # ou "starter" pour plus de ressources
