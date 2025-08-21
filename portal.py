@@ -212,16 +212,27 @@ st.markdown("""
             </style>
             <div class="title-container" style="display: flex; align-items: center; justify-content: center; gap: 15px; margin-bottom: 2rem;">
                 <div class="title-line" style="width: 60px; height: 2px; background: linear-gradient(to right, transparent, rgba(255,255,255,0.8));"></div>
-                <h1 class="main-title" style="
-                    font-size: 3.5rem; 
-                    font-weight: 500; 
-                    color: white; 
-                    margin: 0;
-                    letter-spacing: 8px; 
-                    text-transform: uppercase;
-                    font-family: 'Helvetica Neue', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-                    text-shadow: 0 2px 10px rgba(0,0,0,0.2);
-                ">CONSTRUCTO<span style="font-weight: 700; color: #1a1a1a;"> AI</span></h1>
+                <div style="display: flex; align-items: baseline; gap: 10px;">
+                    <h1 style="
+                        font-size: 3.5rem; 
+                        font-weight: 500; 
+                        color: white; 
+                        margin: 0;
+                        letter-spacing: 8px; 
+                        text-transform: uppercase;
+                        font-family: 'Helvetica Neue', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+                        text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+                    ">CONSTRUCTO</h1>
+                    <h1 style="
+                        font-size: 3.5rem; 
+                        font-weight: 700; 
+                        color: #000000; 
+                        margin: 0;
+                        letter-spacing: 8px; 
+                        text-transform: uppercase;
+                        font-family: 'Helvetica Neue', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+                    ">AI</h1>
+                </div>
                 <div class="title-line" style="width: 60px; height: 2px; background: linear-gradient(to left, transparent, rgba(255,255,255,0.8));"></div>
             </div>
             <p class="main-subtitle" style="font-size: 1.5rem; font-weight: 500; margin-bottom: 1rem;">Vos Assistant AI pour la construction</p>
