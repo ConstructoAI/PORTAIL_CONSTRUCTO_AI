@@ -272,6 +272,14 @@ section[data-testid="stSidebar"] {
     mask-composite: exclude;
 }
 
+/* Forcer le texte en blanc dans les cartes avec gradient */
+.app-card .app-name,
+.app-card .app-description,
+.app-card .app-icon,
+.app-card .feature-tag {
+    color: white !important;
+}
+
 .app-badge {
     position: absolute;
     top: 1rem;
@@ -332,14 +340,16 @@ section[data-testid="stSidebar"] {
     gap: 0.5rem;
     width: 100%;
     padding: 0.75rem 1.5rem;
-    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
-    color: white;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    color: white !important;
     text-decoration: none;
     border-radius: 8px;
     font-weight: 600;
     transition: var(--transition);
     position: relative;
     overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .app-button::before {
@@ -359,7 +369,9 @@ section[data-testid="stSidebar"] {
 
 .app-button:hover {
     transform: translateY(-2px);
-    box-shadow: 0 10px 20px rgba(59, 130, 246, 0.3);
+    box-shadow: 0 10px 20px rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.3);
+    border-color: rgba(255, 255, 255, 0.5);
 }
 
 .button-arrow {

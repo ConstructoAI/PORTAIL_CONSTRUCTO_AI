@@ -253,21 +253,21 @@ if view_mode == "Cartes":
             # Carte d'application avec style premium
             st.markdown(f"""
                 <div class="app-card" style="background: {app['gradient']};">
-                    <div class="app-card-inner">
-                        <div class="app-badge">{app['badge']}</div>
-                        <div class="app-icon">{app['icon']}</div>
-                        <h3 class="app-name">{app['name']}</h3>
-                        <p class="app-description">{app['description']}</p>
+                    <div class="app-card-inner" style="color: white;">
+                        <div class="app-badge" style="background: rgba(255, 255, 255, 0.95); color: {app['color']}; font-weight: 700; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);">{app['badge']}</div>
+                        <div class="app-icon" style="color: white;">{app['icon']}</div>
+                        <h3 class="app-name" style="color: white;">{app['name']}</h3>
+                        <p class="app-description" style="color: rgba(255, 255, 255, 0.95);">{app['description']}</p>
                         <div class="app-features">
-                            {''.join([f'<span class="feature-tag">✓ {feature}</span>' for feature in app['features'][:2]])}
+                            {''.join([f'<span class="feature-tag" style="background: rgba(255, 255, 255, 0.2); color: white;">✓ {feature}</span>' for feature in app['features'][:2]])}
                         </div>
-                        <a href="{app['url']}" target="_blank" class="app-button">
+                        <a href="{app['url']}" target="_blank" class="app-button" style="background: rgba(255, 255, 255, 0.2); backdrop-filter: blur(10px); color: white; border: 1px solid rgba(255, 255, 255, 0.3);">
                             <span>Accéder</span>
                             <span class="button-arrow">→</span>
                         </a>
-                        <div class="app-status">
-                            <span class="status-dot"></span>
-                            <span>En ligne</span>
+                        <div class="app-status" style="color: white;">
+                            <span class="status-dot" style="background: #10B981; box-shadow: 0 0 10px rgba(16, 185, 129, 0.5);"></span>
+                            <span style="color: rgba(255, 255, 255, 0.9);">En ligne</span>
                         </div>
                     </div>
                 </div>
