@@ -84,7 +84,7 @@ APPLICATIONS = [
     },
     {
         "id": "b2b-pbr8",
-        "name": "B2B Construction Québec",
+        "name": "B2B",
         "icon": "🏗️",
         "url": "https://b2b.constructoai.ca/",
         "description": "Plateforme B2B de gestion des soumissions avec workflow d'approbation intelligent pour entreprises RBQ",
@@ -97,9 +97,9 @@ APPLICATIONS = [
     },
     {
         "id": "c2b-cs4p",
-        "name": "Portail C2B",
+        "name": "C2B",
         "icon": "🏢",
-        "url": "https://c2b-cs4p.constructoai.ca/",
+        "url": "https://c2b.constructoai.ca/",
         "description": "Portail Client à Entreprise - Solution mono-entreprise pour recevoir et gérer les demandes de soumissions",
         "features": ["Réception demandes clients", "Soumissions personnalisées", "Suivi temps réel", "Dashboard propriétaire"],
         "status": "production",
@@ -144,11 +144,20 @@ st.markdown("""
     <div class="header-container">
         <div class="header-glow"></div>
         <div class="header-content">
-            <div class="logo-container">
-                <div class="logo-icon">🏗️</div>
-                <div class="logo-ring"></div>
+            <div style="display: flex; align-items: center; justify-content: center; gap: 15px; margin-bottom: 2rem;">
+                <div style="width: 60px; height: 2px; background: linear-gradient(to right, transparent, rgba(255,255,255,0.8));"></div>
+                <h1 style="
+                    font-size: 3.5rem; 
+                    font-weight: 500; 
+                    color: white; 
+                    margin: 0;
+                    letter-spacing: 8px; 
+                    text-transform: uppercase;
+                    font-family: 'Helvetica Neue', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+                    text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+                ">CONSTRUCTO<span style="font-weight: 700; color: #1a1a1a;"> AI</span></h1>
+                <div style="width: 60px; height: 2px; background: linear-gradient(to left, transparent, rgba(255,255,255,0.8));"></div>
             </div>
-            <h1 class="main-title">Constructo AI</h1>
             <p class="main-subtitle" style="font-size: 1.5rem; font-weight: 500; margin-bottom: 1rem;">Vos Assistant AI pour la construction</p>
             <p class="main-description" style="color: rgba(255, 255, 255, 0.9); font-size: 1.1rem; max-width: 800px; margin: 0 auto;">Estimez et vérifiez vos projets 4x plus vite. Constructo AI est la plateforme intelligente qui révolutionne vos projets de construction.</p>
             <div class="header-stats">
@@ -251,96 +260,42 @@ if view_mode == "Cartes":
     cols = st.columns(3)
     for idx, app in enumerate(filtered_apps):
         with cols[idx % 3]:
-            # Carte d'application avec style professionnel sobre
-            st.markdown(f"""
-                <div class="professional-card" style="
-                    background: white; 
-                    border: 1px solid #E5E7EB; 
-                    border-radius: 12px; 
-                    padding: 2rem; 
-                    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); 
-                    transition: all 0.3s;
-                    position: relative;
-                    height: auto;
-                    margin-bottom: 2rem;
-                " onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 25px rgba(0, 0, 0, 0.12)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 1px 3px rgba(0, 0, 0, 0.1)'">
-                    
-                    <div class="card-badge" style="
-                        position: absolute; 
-                        top: 1rem; 
-                        right: 1rem; 
-                        background: #F3F4F6; 
-                        color: #6B7280; 
-                        padding: 0.25rem 0.75rem; 
-                        border-radius: 20px; 
-                        font-size: 0.75rem; 
-                        font-weight: 600; 
-                        border: 1px solid #E5E7EB;
-                    ">{app['badge']}</div>
-                    
-                    <div class="card-icon" style="
-                        color: {app['color']}; 
-                        font-size: 3rem; 
-                        margin-bottom: 1rem; 
-                        display: block;
-                    ">{app['icon']}</div>
-                    
-                    <h3 class="card-title" style="
-                        color: #1F2937 !important; 
-                        font-size: 1.25rem; 
-                        font-weight: 700; 
-                        margin-bottom: 0.75rem;
-                        line-height: 1.2;
-                    ">{app['name']}</h3>
-                    
-                    <p class="card-description" style="
-                        color: #6B7280 !important; 
-                        font-size: 0.9rem; 
-                        line-height: 1.5; 
-                        margin-bottom: 1rem;
-                        display: block;
-                        min-height: 2.5rem;
-                    ">{app['description']}</p>
-                    
-                    <div class="card-features" style="margin-bottom: 1.5rem;">
-                        {''.join([f'''<span style="
-                            background: #F9FAFB; 
-                            color: #374151; 
-                            padding: 0.25rem 0.5rem; 
-                            border-radius: 6px; 
-                            font-size: 0.7rem; 
-                            margin-right: 0.5rem; 
-                            margin-bottom: 0.5rem;
-                            display: inline-block; 
-                            border: 1px solid #E5E7EB;
-                        ">✓ {feature}</span>''' for feature in app['features'][:2]])}
+            # Utilisation de st.container pour éviter les conflits CSS
+            with st.container():
+                st.markdown(f"""
+                    <div style="background: white; border: 1px solid #ddd; border-radius: 10px; padding: 20px; margin-bottom: 20px;">
+                        <div style="text-align: center; font-size: 40px; margin-bottom: 10px;">
+                            {app['icon']}
+                        </div>
+                        <h3 style="color: #1a1a1a; font-size: 18px; margin: 10px 0; text-align: center; font-weight: bold;">
+                            {app['name']}
+                        </h3>
+                        <p style="color: #666; font-size: 14px; line-height: 1.4; margin: 10px 0; text-align: center;">
+                            {app['description'][:100]}...
+                        </p>
+                        <div style="margin: 15px 0; text-align: center;">
+                            <span style="background: #f0f0f0; padding: 4px 8px; border-radius: 4px; font-size: 12px; color: #333; margin: 0 2px;">
+                                {app['features'][0]}
+                            </span>
+                        </div>
+                        <div style="text-align: center; margin-top: 15px;">
+                            <a href="{app['url']}" target="_blank" style="
+                                background: #007bff; 
+                                color: white; 
+                                padding: 10px 20px; 
+                                border-radius: 5px; 
+                                text-decoration: none; 
+                                display: inline-block;
+                                font-weight: bold;
+                            ">
+                                Accéder →
+                            </a>
+                        </div>
+                        <div style="text-align: center; margin-top: 10px;">
+                            <span style="color: #28a745; font-size: 12px;">● En ligne</span>
+                        </div>
                     </div>
-                    
-                    <a href="{app['url']}" target="_blank" style="
-                        display: flex; 
-                        align-items: center; 
-                        justify-content: center; 
-                        width: 100%; 
-                        padding: 0.75rem 1.5rem; 
-                        background: #3B82F6; 
-                        color: white !important; 
-                        border-radius: 8px; 
-                        text-decoration: none; 
-                        font-weight: 600; 
-                        transition: all 0.3s; 
-                        border: none;
-                        margin-bottom: 1rem;
-                    " onmouseover="this.style.background='#2563EB'; this.style.transform='translateY(-1px)'" onmouseout="this.style.background='#3B82F6'; this.style.transform='translateY(0)'">
-                        <span>Accéder</span>
-                        <span style="margin-left: 0.5rem;">→</span>
-                    </a>
-                    
-                    <div style="display: flex; align-items: center; gap: 0.5rem;">
-                        <span style="width: 8px; height: 8px; border-radius: 50%; background: #10B981;"></span>
-                        <span style="color: #6B7280; font-size: 0.875rem;">En ligne</span>
-                    </div>
-                </div>
-            """, unsafe_allow_html=True)
+                """, unsafe_allow_html=True)
 
 else:
     # Vue en liste détaillée
@@ -426,31 +381,35 @@ with col3:
 
 # Footer
 st.markdown("""
-    <div class="footer">
-        <div class="footer-content">
-            <div class="footer-section">
-                <h4>🏗️ Constructo AI</h4>
-                <p>Leader en solutions IA pour la construction au Québec</p>
+    <div style="background: white; border-top: 2px solid #e5e7eb; margin-top: 60px; padding: 40px 20px 20px 20px;">
+        <div style="max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 40px;">
+            <div style="flex: 1; min-width: 200px;">
+                <h4 style="color: #1a1a1a; font-size: 18px; margin-bottom: 15px;">À propos</h4>
+                <p style="color: #666; font-size: 14px; line-height: 1.6;">Leader en solutions IA pour la construction au Québec</p>
             </div>
-            <div class="footer-section">
-                <h4>Contact</h4>
-                <p>📧 info@constructoai.ca<br>
-                📞 1-888-CONSTRUCT<br>
-                📍 Montréal, Québec</p>
+            <div style="flex: 1; min-width: 200px;">
+                <h4 style="color: #1a1a1a; font-size: 18px; margin-bottom: 15px;">Contact</h4>
+                <p style="color: #666; font-size: 14px; line-height: 1.8;">
+                    📧 info@constructoai.ca<br>
+                    📞 514-820-1972<br>
+                    📍 Farnham, Québec
+                </p>
             </div>
-            <div class="footer-section">
-                <h4>Ressources</h4>
-                <p><a href="#" style="color: #93C5FD;">Documentation</a><br>
-                <a href="#" style="color: #93C5FD;">Support</a><br>
-                <a href="#" style="color: #93C5FD;">API</a></p>
+            <div style="flex: 1; min-width: 200px;">
+                <h4 style="color: #1a1a1a; font-size: 18px; margin-bottom: 15px;">Ressources</h4>
+                <p style="color: #666; font-size: 14px; line-height: 1.8;">
+                    <a href="#" style="color: #007bff; text-decoration: none;">Documentation</a><br>
+                    <a href="#" style="color: #007bff; text-decoration: none;">Support</a><br>
+                    <a href="#" style="color: #007bff; text-decoration: none;">API</a>
+                </p>
             </div>
-            <div class="footer-section">
-                <h4>Suivez-nous</h4>
-                <p>LinkedIn | Twitter | YouTube</p>
+            <div style="flex: 1; min-width: 200px;">
+                <h4 style="color: #1a1a1a; font-size: 18px; margin-bottom: 15px;">Suivez-nous</h4>
+                <p style="color: #666; font-size: 14px; line-height: 1.6;">LinkedIn | Twitter | YouTube</p>
             </div>
         </div>
-        <div class="footer-bottom">
-            <p>© 2025 Constructo AI - Tous droits réservés | Développé avec ❤️ au Québec</p>
+        <div style="text-align: center; margin-top: 30px; padding-top: 20px; border-top: 1px solid #e5e7eb;">
+            <p style="color: #666; font-size: 14px;">© 2025 Constructo AI - Tous droits réservés | Développé par Sylvain Leduc</p>
         </div>
     </div>
 """, unsafe_allow_html=True)
