@@ -196,23 +196,49 @@ st.markdown("""
         <div class="header-glow"></div>
         <div class="header-content">
             <style>
+                .title-wrapper {{
+                    display: flex;
+                    align-items: baseline;
+                    justify-content: center;
+                    gap: 10px;
+                }}
                 @media (max-width: 768px) {{
                     .title-container {{ flex-direction: column !important; gap: 10px !important; }}
-                    .title-line {{ width: 100px !important; margin: 10px auto !important; }}
-                    .main-title {{ font-size: 2rem !important; letter-spacing: 4px !important; }}
-                    .main-subtitle {{ font-size: 1.2rem !important; }}
-                    .main-description {{ font-size: 0.95rem !important; padding: 0 20px !important; }}
-                    .header-stats {{ flex-wrap: wrap !important; gap: 15px !important; }}
-                    .stat-item {{ flex: 0 0 45% !important; }}
+                    .title-line {{ display: none !important; }}
+                    .title-wrapper {{ 
+                        flex-direction: row !important; 
+                        gap: 8px !important;
+                        align-items: center !important;
+                    }}
+                    .title-wrapper h1:first-child {{ 
+                        font-size: 2.2rem !important; 
+                        letter-spacing: 3px !important; 
+                    }}
+                    .title-wrapper h1:last-child {{ 
+                        font-size: 2.2rem !important; 
+                        letter-spacing: 3px !important; 
+                    }}
+                    .main-subtitle {{ font-size: 1.1rem !important; margin-top: 0.5rem !important; }}
+                    .main-description {{ font-size: 0.9rem !important; padding: 0 15px !important; line-height: 1.5 !important; }}
+                    .header-stats {{ flex-wrap: wrap !important; gap: 15px !important; padding: 0 10px !important; }}
+                    .stat-item {{ flex: 0 0 45% !important; padding: 0.8rem !important; }}
                 }}
                 @media (max-width: 480px) {{
-                    .main-title {{ font-size: 1.5rem !important; letter-spacing: 2px !important; }}
+                    .title-wrapper h1:first-child {{ 
+                        font-size: 1.8rem !important; 
+                        letter-spacing: 2px !important; 
+                    }}
+                    .title-wrapper h1:last-child {{ 
+                        font-size: 1.8rem !important; 
+                        letter-spacing: 2px !important; 
+                    }}
+                    .main-subtitle {{ font-size: 1rem !important; }}
+                    .main-description {{ font-size: 0.85rem !important; }}
                     .stat-item {{ flex: 0 0 100% !important; }}
-                }}
             </style>
             <div class="title-container" style="display: flex; align-items: center; justify-content: center; gap: 15px; margin-bottom: 2rem;">
                 <div class="title-line" style="width: 60px; height: 2px; background: linear-gradient(to right, transparent, rgba(255,255,255,0.8));"></div>
-                <div style="display: flex; align-items: baseline; gap: 10px;">
+                <div class="title-wrapper">
                     <h1 style="
                         font-size: 3.5rem; 
                         font-weight: 500; 

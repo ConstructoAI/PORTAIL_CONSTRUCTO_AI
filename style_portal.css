@@ -557,20 +557,35 @@ section[data-testid="stSidebar"] {
 
 /* === RESPONSIVE DESIGN === */
 @media (max-width: 768px) {
+    .header-container {
+        padding: 2.5rem 1.5rem;
+        border-radius: 16px;
+        margin-bottom: 2rem;
+    }
+    
     .main-title {
         font-size: 2.5rem;
     }
     
     .header-stats {
-        gap: 1.5rem;
+        gap: 1rem;
+        padding: 0 0.5rem;
+        margin-top: 1.5rem;
     }
     
     .stat-item {
-        min-width: 100px;
+        min-width: calc(50% - 0.5rem);
+        padding: 0.8rem 0.5rem;
+        background: rgba(255, 255, 255, 0.15);
     }
     
     .stat-value {
-        font-size: 1.5rem;
+        font-size: 1.4rem;
+        font-weight: 600;
+    }
+    
+    .stat-label {
+        font-size: 0.75rem;
     }
     
     .footer-content {
@@ -584,6 +599,11 @@ section[data-testid="stSidebar"] {
 }
 
 @media (max-width: 480px) {
+    .header-container {
+        padding: 2rem 1rem;
+        border-radius: 12px;
+    }
+    
     .main-title {
         font-size: 2rem;
     }
@@ -592,12 +612,13 @@ section[data-testid="stSidebar"] {
         font-size: 1rem;
     }
     
-    .header-container {
-        padding: 2rem 1rem;
-    }
-    
     .logo-icon {
         font-size: 3rem;
+    }
+    
+    .stat-item {
+        min-width: 100%;
+        margin-bottom: 0.5rem;
     }
 }
 
