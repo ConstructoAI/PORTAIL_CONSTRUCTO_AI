@@ -206,13 +206,15 @@ st.markdown("""
                     .title-container {{ flex-direction: column !important; gap: 10px !important; }}
                     .title-line {{ display: none !important; }}
                     .title-wrapper {{ 
-                        flex-direction: row !important; 
-                        gap: 8px !important;
+                        flex-direction: column !important; 
+                        gap: 0 !important;
                         align-items: center !important;
+                        text-align: center !important;
                     }}
                     .title-wrapper h1:first-child {{ 
                         font-size: 2.2rem !important; 
                         letter-spacing: 3px !important; 
+                        margin-bottom: -5px !important;
                     }}
                     .title-wrapper h1:last-child {{ 
                         font-size: 2.2rem !important; 
@@ -224,9 +226,15 @@ st.markdown("""
                     .stat-item {{ flex: 0 0 45% !important; padding: 0.8rem !important; }}
                 }}
                 @media (max-width: 480px) {{
+                    .title-wrapper {{ 
+                        flex-direction: column !important; 
+                        gap: 0 !important;
+                        align-items: center !important;
+                    }}
                     .title-wrapper h1:first-child {{ 
                         font-size: 1.8rem !important; 
-                        letter-spacing: 2px !important; 
+                        letter-spacing: 2px !important;
+                        margin-bottom: -5px !important;
                     }}
                     .title-wrapper h1:last-child {{ 
                         font-size: 1.8rem !important; 
@@ -262,7 +270,7 @@ st.markdown("""
                 <div class="title-line" style="width: 60px; height: 2px; background: linear-gradient(to left, transparent, rgba(255,255,255,0.8));"></div>
             </div>
             <p class="main-subtitle" style="font-size: 1.5rem; font-weight: 500; margin-bottom: 1rem;">Vos Assistant AI pour la construction</p>
-            <p class="main-description" style="color: rgba(255, 255, 255, 0.9); font-size: 1.1rem; max-width: 800px; margin: 0 auto;">Estimez et vérifiez vos projets 4x plus vite. Constructo AI est la plateforme intelligente qui révolutionne vos projets de construction.</p>
+            <p class="main-description" style="color: rgba(255, 255, 255, 0.9); font-size: 1.1rem; max-width: 800px; margin: 0 auto;">Estimez et vérifiez vos projets 4x plus rapidement. Constructo AI est la plateforme intelligente qui révolutionne vos projets de construction.</p>
             <div class="header-stats">
                 <div class="stat-item">
                     <span class="stat-value">{users}</span>

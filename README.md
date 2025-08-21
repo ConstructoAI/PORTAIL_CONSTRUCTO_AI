@@ -8,7 +8,7 @@
 
 ## 🎯 Description
 
-**Constructo AI** est votre point d'accès unique à l'écosystème complet de solutions IA dédiées au secteur de la construction au Québec. Cette plateforme intelligente révolutionne vos projets de construction en vous permettant d'estimer et vérifier vos projets 4x plus vite.
+**Constructo AI** est votre point d'accès unique à l'écosystème complet de solutions IA dédiées au secteur de la construction au Québec. Cette plateforme intelligente révolutionne vos projets de construction en vous permettant d'estimer et vérifier vos projets 4x plus rapidement.
 
 ## 🚀 Applications Disponibles
 
