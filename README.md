@@ -4,11 +4,11 @@
 [![Python](https://img.shields.io/badge/Python-3.9%2B-blue.svg)](https://python.org)
 [![Status](https://img.shields.io/badge/Status-Production%20Ready-brightgreen.svg)]()
 
-> **Centre de Solutions IA pour la Construction au Québec**
+> **Vos Assistant AI pour la construction**
 
 ## 🎯 Description
 
-Le **Portail Constructo AI** est votre point d'accès unique à l'écosystème complet de solutions IA dédiées au secteur de la construction au Québec. Cette interface élégante centralise l'accès à toutes nos applications spécialisées.
+**Constructo AI** est votre point d'accès unique à l'écosystème complet de solutions IA dédiées au secteur de la construction au Québec. Cette plateforme intelligente révolutionne vos projets de construction en vous permettant d'estimer et vérifier vos projets 4x plus vite.
 
 ## 🚀 Applications Disponibles
 
@@ -47,7 +47,7 @@ Plateforme B2B de gestion des soumissions pour entreprises RBQ
 - Validation RBQ et certifications
 - Dashboard analytique avec KPIs B2B
 
-### 🏢 **Portail C2B** - [c2b-cs4p.constructoai.ca](https://c2b-cs4p.constructoai.ca/)
+### 🏢 **Portail C2B** - [c2b.constructoai.ca](https://c2b.constructoai.ca/)
 Portail Client à Entreprise mono-entreprise
 - Réception automatique des demandes clients
 - Création de soumissions personnalisées
@@ -93,17 +93,18 @@ run_portal.bat
 ## 🎨 Fonctionnalités
 
 ### Interface Moderne
-- ✨ Design professionnel avec animations fluides
-- 🎯 Navigation intuitive et responsive
-- 🔍 Recherche et filtrage des applications
-- 📊 Statistiques en temps réel
+- ✨ Design professionnel épuré avec cartes blanches et ombres subtiles
+- 🎯 Navigation intuitive et responsive avec effets de survol
+- 🔍 Recherche et filtrage intelligent des applications
+- 📊 Statistiques en temps réel (2,500+ utilisateurs, 15,000+ projets)
+- 🎨 Animations CSS fluides et transitions professionnelles
 
 ### Modes d'Affichage
-- **Vue Cartes** : Affichage en grille avec aperçu visuel
+- **Vue Cartes** : Affichage en grille avec design professionnel blanc
 - **Vue Liste** : Affichage détaillé avec descriptions complètes
 
 ### Filtres Intelligents
-- Par catégorie (Expertise, Gestion, Collaboration, etc.)
+- Par catégorie (Expertise, Estimation, Gestion, Appels d'Offres, etc.)
 - Par recherche textuelle
 - Par statut de production
 
@@ -111,11 +112,13 @@ run_portal.bat
 
 ```
 portail/
-├── portal.py           # Application principale Streamlit
-├── style_portal.css    # Styles CSS professionnels
-├── requirements.txt    # Dépendances Python
-├── run_portal.bat      # Script de lancement Windows
-└── README.md          # Documentation
+├── portal.py              # Application principale Streamlit
+├── style_portal.css       # Styles CSS professionnels
+├── requirements.txt       # Dépendances Python (streamlit>=1.48.0)
+├── Procfile              # Configuration déploiement Render
+├── run_portal.bat        # Script de lancement Windows
+├── INSTRUCTIONS_RENDER.md # Guide de déploiement Render
+└── README.md             # Documentation complète
 ```
 
 ## 🔧 Configuration
@@ -150,11 +153,18 @@ APPLICATIONS = [
 2. Connectez à [share.streamlit.io](https://share.streamlit.io)
 3. Déployez automatiquement
 
-### Option 2: Render.com
-1. Créez un nouveau Web Service
-2. Connectez votre repo GitHub
-3. Build command: `pip install -r requirements.txt`
-4. Start command: `streamlit run portal.py --server.port=$PORT`
+### Option 2: Render.com (Production - Recommandé)
+1. Créez un nouveau Web Service sur [render.com](https://render.com)
+2. Connectez votre repository GitHub
+3. **Build Command:**
+   ```bash
+   pip install --upgrade pip && pip install -r requirements.txt
+   ```
+4. **Start Command:**
+   ```bash
+   streamlit run portal.py --server.port=$PORT --server.address=0.0.0.0 --server.enableCORS=true --server.enableXsrfProtection=false
+   ```
+5. Déploiement automatique à chaque push sur `main`
 
 ### Option 3: Docker
 ```dockerfile
@@ -165,6 +175,28 @@ RUN pip install -r requirements.txt
 EXPOSE 8501
 CMD ["streamlit", "run", "portal.py"]
 ```
+
+## 🔧 Dépannage Déploiement
+
+### Problèmes courants sur Render
+Si vous obtenez une erreur "Not Found" :
+
+1. **Supprimer les fichiers conflictuels :**
+   ```bash
+   git rm setup.sh render.yaml runtime.txt
+   git commit -m "Fix deployment - remove conflicting files"
+   git push origin main
+   ```
+
+2. **Vérifier la configuration Render :**
+   - Build Command : `pip install --upgrade pip && pip install -r requirements.txt`
+   - Start Command : `streamlit run portal.py --server.port=$PORT --server.address=0.0.0.0 --server.enableCORS=true --server.enableXsrfProtection=false`
+
+3. **Clear Build Cache :**
+   - Dashboard Render > Settings > "Clear build cache"
+   - Redéployer manuellement
+
+Consultez `INSTRUCTIONS_RENDER.md` pour plus de détails.
 
 ## 📊 Statistiques
 
@@ -189,14 +221,13 @@ Le portail affiche en temps réel :
 
 ### Contact
 - 📧 Email : info@constructoai.ca
-- 📞 Téléphone : 1-888-CONSTRUCT
+- 📞 Téléphone : 514-820-1972
+- 📍 Localisation : Farnham, Québec
 - 💬 Chat : Disponible sur chaque application
 
 ## 📝 Licence
 
-© 2025 Constructo AI - Tous droits réservés
-
-Développé avec ❤️ au Québec
+© 2025 Constructo AI - Tous droits réservés | Développé par Sylvain Leduc
 
 ---
 
@@ -221,10 +252,14 @@ Développé avec ❤️ au Québec
 
 ## 🏆 Équipe
 
-**Développé par Constructo AI**
-- Leader en solutions IA pour la construction au Québec
+**Sylvain Leduc**
+📧 info@constructoai.ca
+📞 514-820-1972
+📍 Farnham, Québec
+
+Leader en solutions IA pour la construction au Québec
 - Innovation continue depuis 2023
-- Support technique 24/7
+- Support technique personnalisé
 
 ---
 
