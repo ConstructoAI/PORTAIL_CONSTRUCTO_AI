@@ -1,6 +1,6 @@
 @echo off
 echo ========================================
-echo   PORTAIL CONSTRUCTOAI
+echo   PORTAIL CONSTRUCTO AI
 echo   Centre de Solutions IA
 echo ========================================
 echo.
@@ -56,7 +56,7 @@ echo Installation des dependances...
 
 echo.
 echo ========================================
-echo   DEMARRAGE DU PORTAIL CONSTRUCTOAI
+echo   DEMARRAGE DU PORTAIL CONSTRUCTO AI
 echo ========================================
 echo.
 echo Interface accessible sur: http://localhost:8501

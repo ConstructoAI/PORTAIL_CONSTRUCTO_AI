@@ -1,4 +1,4 @@
-# portal.py - Portail ConstructoAI
+# portal.py - Portail Constructo AI
 import streamlit as st
 import time
 from datetime import datetime
@@ -7,7 +7,7 @@ import os
 
 # Configuration de la page
 st.set_page_config(
-    page_title="Portail ConstructoAI - Centre de Solutions IA",
+    page_title="Portail Constructo AI - Centre de Solutions IA",
     page_icon="🏗️",
     layout="wide",
     initial_sidebar_state="collapsed"
@@ -143,7 +143,7 @@ st.markdown("""
                 <div class="logo-icon">🏗️</div>
                 <div class="logo-ring"></div>
             </div>
-            <h1 class="main-title">Portail ConstructoAI</h1>
+            <h1 class="main-title">Portail Constructo AI</h1>
             <p class="main-subtitle">Centre de Solutions IA pour la Construction au Québec</p>
             <div class="header-stats">
                 <div class="stat-item">
@@ -358,7 +358,7 @@ st.markdown("""
     <div class="footer">
         <div class="footer-content">
             <div class="footer-section">
-                <h4>🏗️ ConstructoAI</h4>
+                <h4>🏗️ Constructo AI</h4>
                 <p>Leader en solutions IA pour la construction au Québec</p>
             </div>
             <div class="footer-section">
@@ -379,7 +379,7 @@ st.markdown("""
             </div>
         </div>
         <div class="footer-bottom">
-            <p>© 2025 ConstructoAI - Tous droits réservés | Développé avec ❤️ au Québec</p>
+            <p>© 2025 Constructo AI - Tous droits réservés | Développé avec ❤️ au Québec</p>
         </div>
     </div>
 """, unsafe_allow_html=True)

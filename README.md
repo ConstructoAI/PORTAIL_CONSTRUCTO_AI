@@ -1,4 +1,4 @@
-# 🏗️ Portail ConstructoAI
+# 🏗️ Portail Constructo AI
 
 [![Streamlit](https://img.shields.io/badge/Built%20with-Streamlit-FF6B6B.svg)](https://streamlit.io/)
 [![Python](https://img.shields.io/badge/Python-3.9%2B-blue.svg)](https://python.org)
@@ -8,7 +8,7 @@
 
 ## 🎯 Description
 
-Le **Portail ConstructoAI** est votre point d'accès unique à l'écosystème complet de solutions IA dédiées au secteur de la construction au Québec. Cette interface élégante centralise l'accès à toutes nos applications spécialisées.
+Le **Portail Constructo AI** est votre point d'accès unique à l'écosystème complet de solutions IA dédiées au secteur de la construction au Québec. Cette interface élégante centralise l'accès à toutes nos applications spécialisées.
 
 ## 🚀 Applications Disponibles
 
@@ -194,7 +194,7 @@ Le portail affiche en temps réel :
 
 ## 📝 Licence
 
-© 2025 ConstructoAI - Tous droits réservés
+© 2025 Constructo AI - Tous droits réservés
 
 Développé avec ❤️ au Québec
 
@@ -221,7 +221,7 @@ Développé avec ❤️ au Québec
 
 ## 🏆 Équipe
 
-**Développé par ConstructoAI**
+**Développé par Constructo AI**
 - Leader en solutions IA pour la construction au Québec
 - Innovation continue depuis 2023
 - Support technique 24/7

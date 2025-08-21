@@ -1,4 +1,4 @@
-# 📚 Guide de Déploiement - Portail ConstructoAI
+# 📚 Guide de Déploiement - Portail Constructo AI
 
 ## 🚀 Déploiement sur GitHub et Render
 
@@ -8,7 +8,7 @@
    - Allez sur [github.com](https://github.com)
    - Cliquez sur "New repository"
    - Nom suggéré: `portail-constructoai`
-   - Description: "Portail centralisé pour les solutions IA ConstructoAI"
+   - Description: "Portail centralisé pour les solutions IA Constructo AI"
    - Public ou Private selon votre préférence
    - **NE PAS** initialiser avec README (vous en avez déjà un)
 
@@ -17,7 +17,7 @@
    cd E:\09. LOGICIELS\GITHUB\PORTAIL
    git init
    git add .
-   git commit -m "Initial commit - Portail ConstructoAI"
+   git commit -m "Initial commit - Portail Constructo AI"
    ```
 
 3. **Connecter au repository GitHub**
@@ -212,7 +212,7 @@ render status
 - Status: [status.render.com](https://status.render.com)
 - Support: Dashboard > Help
 
-### ConstructoAI:
+### Constructo AI:
 - Email: info@constructoai.ca
 - GitHub Issues: github.com/VOTRE-USERNAME/portail-constructoai/issues
 

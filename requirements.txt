@@ -1,4 +1,4 @@
-# requirements.txt - Dépendances pour le Portail ConstructoAI
+# requirements.txt - Dépendances pour le Portail Constructo AI
 
 # Framework principal
 streamlit>=1.48.0
