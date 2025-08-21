@@ -28,6 +28,57 @@ def load_css(file_name):
 # Chargement du CSS
 load_css("style_portal.css")
 
+# CSS Responsive pour mobile
+st.markdown("""
+<style>
+    /* Responsive Design pour Mobile */
+    @media (max-width: 768px) {
+        /* Ajustement des colonnes pour mobile */
+        .stColumns > div {
+            flex: 0 0 100% !important;
+            max-width: 100% !important;
+        }
+        
+        /* Header responsive */
+        .header-container {
+            padding: 20px 10px !important;
+        }
+        
+        /* Cartes en pleine largeur sur mobile */
+        [data-testid="column"] {
+            width: 100% !important;
+            flex: 1 0 100% !important;
+        }
+        
+        /* Texte adaptatif */
+        h1, h2, h3 {
+            word-wrap: break-word !important;
+        }
+        
+        /* Boutons et inputs responsive */
+        .stTextInput > div > div > input {
+            font-size: 16px !important;
+        }
+        
+        .stSelectbox > div > div {
+            font-size: 16px !important;
+        }
+    }
+    
+    @media (max-width: 480px) {
+        /* Encore plus petit pour très petits écrans */
+        .main-title {
+            font-size: 1.8rem !important;
+        }
+        
+        /* Padding réduit */
+        .block-container {
+            padding: 1rem !important;
+        }
+    }
+</style>
+""", unsafe_allow_html=True)
+
 # Données des applications
 APPLICATIONS = [
     {
@@ -144,9 +195,24 @@ st.markdown("""
     <div class="header-container">
         <div class="header-glow"></div>
         <div class="header-content">
-            <div style="display: flex; align-items: center; justify-content: center; gap: 15px; margin-bottom: 2rem;">
-                <div style="width: 60px; height: 2px; background: linear-gradient(to right, transparent, rgba(255,255,255,0.8));"></div>
-                <h1 style="
+            <style>
+                @media (max-width: 768px) {
+                    .title-container { flex-direction: column !important; gap: 10px !important; }
+                    .title-line { width: 100px !important; margin: 10px auto !important; }
+                    .main-title { font-size: 2rem !important; letter-spacing: 4px !important; }
+                    .main-subtitle { font-size: 1.2rem !important; }
+                    .main-description { font-size: 0.95rem !important; padding: 0 20px !important; }
+                    .header-stats { flex-wrap: wrap !important; gap: 15px !important; }
+                    .stat-item { flex: 0 0 45% !important; }
+                }
+                @media (max-width: 480px) {
+                    .main-title { font-size: 1.5rem !important; letter-spacing: 2px !important; }
+                    .stat-item { flex: 0 0 100% !important; }
+                }
+            </style>
+            <div class="title-container" style="display: flex; align-items: center; justify-content: center; gap: 15px; margin-bottom: 2rem;">
+                <div class="title-line" style="width: 60px; height: 2px; background: linear-gradient(to right, transparent, rgba(255,255,255,0.8));"></div>
+                <h1 class="main-title" style="
                     font-size: 3.5rem; 
                     font-weight: 500; 
                     color: white; 
@@ -156,7 +222,7 @@ st.markdown("""
                     font-family: 'Helvetica Neue', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
                     text-shadow: 0 2px 10px rgba(0,0,0,0.2);
                 ">CONSTRUCTO<span style="font-weight: 700; color: #1a1a1a;"> AI</span></h1>
-                <div style="width: 60px; height: 2px; background: linear-gradient(to left, transparent, rgba(255,255,255,0.8));"></div>
+                <div class="title-line" style="width: 60px; height: 2px; background: linear-gradient(to left, transparent, rgba(255,255,255,0.8));"></div>
             </div>
             <p class="main-subtitle" style="font-size: 1.5rem; font-weight: 500; margin-bottom: 1rem;">Vos Assistant AI pour la construction</p>
             <p class="main-description" style="color: rgba(255, 255, 255, 0.9); font-size: 1.1rem; max-width: 800px; margin: 0 auto;">Estimez et vérifiez vos projets 4x plus vite. Constructo AI est la plateforme intelligente qui révolutionne vos projets de construction.</p>
