@@ -701,7 +701,8 @@ st.markdown("""
             padding: 20px 15px;
         }
         
-        .user-message, .assistant-message {
+        /* Ajustement pour mobile */
+        div[data-testid="stChatMessage"] {
             margin-left: 0;
             margin-right: 0;
         }
@@ -1211,60 +1212,16 @@ with st.container():
             greeting = st.session_state.assistant.get_greeting()
             st.session_state.chat_messages.append({"role": "assistant", "content": greeting})
         
-        # Container pour les messages avec scroll
-        messages_container = st.container(height=300)
+        # Container pour les messages avec st.chat_message (auto-scroll natif)
+        messages_container = st.container(height=400)
         with messages_container:
             for message in st.session_state.chat_messages:
                 if message["role"] == "user":
-                    st.markdown(f"""
-                        <div class="user-message">
-                            <strong style="color: #3B82F6;">Vous:</strong><br>
-                            {message["content"]}
-                        </div>
-                    """, unsafe_allow_html=True)
+                    with st.chat_message("user", avatar="👤"):
+                        st.markdown(message["content"])
                 else:
-                    st.markdown(f"""
-                        <div class="assistant-message">
-                            <strong style="color: #10B981;">Sylvain Leduc:</strong><br>
-                            {message["content"]}
-                        </div>
-                    """, unsafe_allow_html=True)
-            
-            # Élément invisible pour forcer le scroll en bas
-            st.markdown('<div id="chat-bottom"></div>', unsafe_allow_html=True)
-        
-        # Script JavaScript pour auto-scroll vers le bas
-        st.markdown("""
-            <script>
-                // Fonction pour scroll vers le bas du chat
-                function scrollToBottom() {
-                    // Trouver tous les containers avec overflow
-                    const containers = document.querySelectorAll('[data-testid="stVerticalBlock"] > div');
-                    containers.forEach(container => {
-                        // Vérifier si c'est un container avec scroll (height fixe)
-                        if (container.style.height && container.style.overflow === 'auto') {
-                            container.scrollTop = container.scrollHeight;
-                        }
-                    });
-                    
-                    // Alternative: scroll de l'élément chat-bottom si visible
-                    const chatBottom = document.getElementById('chat-bottom');
-                    if (chatBottom) {
-                        chatBottom.scrollIntoView({ behavior: 'smooth', block: 'end' });
-                    }
-                }
-                
-                // Exécuter au chargement et après un court délai
-                setTimeout(scrollToBottom, 100);
-                setTimeout(scrollToBottom, 500);
-                
-                // Observer les changements dans le DOM pour auto-scroll
-                const observer = new MutationObserver(scrollToBottom);
-                const targetNode = document.body;
-                const config = { childList: true, subtree: true };
-                observer.observe(targetNode, config);
-            </script>
-        """, unsafe_allow_html=True)
+                    with st.chat_message("assistant", avatar="🏗️"):
+                        st.markdown(message["content"])
         
         # Zone de saisie
         user_input = st.text_input(
