@@ -1229,6 +1229,42 @@ with st.container():
                             {message["content"]}
                         </div>
                     """, unsafe_allow_html=True)
+            
+            # Élément invisible pour forcer le scroll en bas
+            st.markdown('<div id="chat-bottom"></div>', unsafe_allow_html=True)
+        
+        # Script JavaScript pour auto-scroll vers le bas
+        st.markdown("""
+            <script>
+                // Fonction pour scroll vers le bas du chat
+                function scrollToBottom() {
+                    // Trouver tous les containers avec overflow
+                    const containers = document.querySelectorAll('[data-testid="stVerticalBlock"] > div');
+                    containers.forEach(container => {
+                        // Vérifier si c'est un container avec scroll (height fixe)
+                        if (container.style.height && container.style.overflow === 'auto') {
+                            container.scrollTop = container.scrollHeight;
+                        }
+                    });
+                    
+                    // Alternative: scroll de l'élément chat-bottom si visible
+                    const chatBottom = document.getElementById('chat-bottom');
+                    if (chatBottom) {
+                        chatBottom.scrollIntoView({ behavior: 'smooth', block: 'end' });
+                    }
+                }
+                
+                // Exécuter au chargement et après un court délai
+                setTimeout(scrollToBottom, 100);
+                setTimeout(scrollToBottom, 500);
+                
+                // Observer les changements dans le DOM pour auto-scroll
+                const observer = new MutationObserver(scrollToBottom);
+                const targetNode = document.body;
+                const config = { childList: true, subtree: true };
+                observer.observe(targetNode, config);
+            </script>
+        """, unsafe_allow_html=True)
         
         # Zone de saisie
         user_input = st.text_input(
