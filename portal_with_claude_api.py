@@ -37,25 +37,28 @@ class AssistantIA:
         self.profile = "Sylvain Leduc - Créateur de Constructo AI"
         self.api_key = os.getenv("ANTHROPIC_API_KEY", "")
         self.client = None
+        self.mode = "Mode Démo 🎯"
         
         # Initialiser Claude si disponible
         if ANTHROPIC_AVAILABLE and self.api_key:
             try:
                 self.client = Anthropic(api_key=self.api_key)
-                print("✅ Claude API initialisée avec succès")
+                self.mode = "Claude API ✅"
+                print("✅ Claude API initialisée avec succès - Mode intelligent activé")
             except Exception as e:
                 print(f"⚠️ Erreur d'initialisation Claude: {e}")
                 self.client = None
+                self.mode = "Mode Démo 🎯"
     
     def get_system_prompt(self):
         """Retourne le prompt système pour Claude"""
         return """Tu es Sylvain Leduc, créateur et développeur principal de l'écosystème Constructo AI.
 
-INSTRUCTIONS CRITIQUES:
-1. Tu réponds UNIQUEMENT aux questions sur les 7 applications Constructo AI (+ le portail)
-2. Tu refuses poliment de discuter de sujets non liés
-3. Réponses courtes et concises (150-200 mots max)
-4. Tu parles à la première personne en tant que créateur
+INSTRUCTIONS:
+1. Tu es expert en construction et en IA, spécialisé dans les 7 applications Constructo AI (+ le portail)
+2. Tu peux discuter de sujets connexes à la construction tout en ramenant vers tes solutions
+3. Réponses détaillées et utiles (200-300 mots selon le besoin)
+4. Tu parles à la première personne en tant que créateur passionné et accessible
 
 TES 7 APPLICATIONS (+ LE PORTAIL):
 1. EXPERTS AI - 60+ experts IA spécialisés révolutionnaires, 2,400+ années expérience cumulative, architecture 6,000+ lignes, valorisation 36-55M$ CAD, impossible reproduire 5-10 ans
@@ -106,12 +109,12 @@ Pour questions hors-sujet, réponds: "Je me spécialise exclusivement dans Const
                 "content": user_message
             })
             
-            # Appel à Claude avec le modèle Sonnet 4
+            # Appel à Claude avec le modèle Sonnet le plus récent
             response = self.client.messages.create(
-                model="claude-sonnet-4-20250514",  # Modèle Sonnet 4 demandé
+                model="claude-3-5-sonnet-20241022",  # Modèle Sonnet 3.5 le plus récent
                 system=self.get_system_prompt(),
                 messages=messages,
-                max_tokens=300,
+                max_tokens=500,  # Augmenté pour des réponses plus complètes
                 temperature=0.7
             )
             
@@ -148,7 +151,16 @@ Pour questions hors-sujet, réponds: "Je me spécialise exclusivement dans Const
         """Génère une réponse (Claude API si disponible, sinon mode démo)"""
         user_msg_lower = user_message.lower()
         
-        # Vérifier le compteur d'échanges
+        # Essayer d'abord avec Claude API si disponible (PRIORITÉ ABSOLUE)
+        if self.client:
+            try:
+                claude_response = self.get_response_from_claude(user_message, conversation_history)
+                if claude_response:
+                    return claude_response
+            except Exception as e:
+                print(f"Erreur API, passage au mode démo: {e}")
+        
+        # Vérifier le compteur d'échanges SEULEMENT en mode démo
         self.exchange_count += 1
         if self.exchange_count > self.max_exchanges:
             return ("🎯 **Nous avons bien couvert Constructo AI!**\n\n"
@@ -156,12 +168,6 @@ Pour questions hors-sujet, réponds: "Je me spécialise exclusivement dans Const
                    "📞 Appelez-moi au 514-820-1972\n"
                    "📧 info@constructoai.ca\n\n"
                    "À bientôt pour transformer votre entreprise! - Sylvain Leduc")
-        
-        # Essayer d'abord avec Claude API si disponible
-        if self.client:
-            claude_response = self.get_response_from_claude(user_message, conversation_history)
-            if claude_response:
-                return claude_response
         
         # ===== MODE DÉMO - Réponses prédéfinies =====
         
@@ -1154,7 +1160,7 @@ st.markdown("""
             </div>
             <div class="chat-status">
                 <span class="status-dot"></span>
-                En ligne - Disponible 24/7
+                En ligne - {st.session_state.assistant.mode}
             </div>
         </div>
         <p style="color: #6B7280; margin-bottom: 20px;">
