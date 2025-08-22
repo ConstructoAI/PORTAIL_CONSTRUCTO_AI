@@ -42,7 +42,7 @@ class AssistantIA:
         # Récupération de la clé API (comme dans EXPERTS IA)
         self.api_key = os.environ.get("ANTHROPIC_API_KEY") or os.getenv("ANTHROPIC_API_KEY")
         self.client = None
-        self.mode = "Mode Démo 🎯"
+        self.mode = ""  # Pas d'indicateur pour le mode démo
         
         # Initialiser Claude si disponible (méthode EXPERTS IA)
         if ANTHROPIC_AVAILABLE:
@@ -50,22 +50,31 @@ class AssistantIA:
                 try:
                     # Initialisation comme dans EXPERTS IA
                     self.client = Anthropic(api_key=self.api_key)
-                    self.mode = "Claude API ✅"
+                    self.mode = "✅"  # Juste le checkmark, sans mentionner Claude
                     print(f"✅ Claude API initialisée avec succès")
                     print(f"✅ Clé API détectée: {self.api_key[:20]}...")
                     
-                    # Test rapide de l'API
-                    test_response = self.client.messages.create(
-                        model="claude-3-haiku-20240307",  # Modèle le moins cher pour test
-                        messages=[{"role": "user", "content": "test"}],
-                        max_tokens=10
-                    )
-                    print("✅ Test API réussi")
+                    # Test rapide de l'API avec Sonnet 4
+                    try:
+                        test_response = self.client.messages.create(
+                            model="claude-sonnet-4-20250514",  # Test avec Sonnet 4
+                            messages=[{"role": "user", "content": "test"}],
+                            max_tokens=10
+                        )
+                        print("✅ Test API réussi avec claude-sonnet-4-20250514")
+                    except:
+                        # Fallback pour le test si Sonnet 4 n'est pas disponible
+                        test_response = self.client.messages.create(
+                            model="claude-3-haiku-20240307",
+                            messages=[{"role": "user", "content": "test"}],
+                            max_tokens=10
+                        )
+                        print("✅ Test API réussi avec modèle de fallback")
                     
                 except Exception as e:
                     print(f"❌ Erreur d'initialisation Claude: {e}")
                     self.client = None
-                    self.mode = "Mode Démo 🎯"
+                    self.mode = ""  # Pas d'indicateur pour le mode démo
             else:
                 print(f"⚠️ Pas de clé API trouvée dans les variables d'environnement")
                 print(f"⚠️ Variables disponibles: {list(os.environ.keys())[:5]}...")
@@ -131,11 +140,11 @@ Pour questions hors-sujet, réponds: "Je me spécialise exclusivement dans Const
                 "content": user_message
             })
             
-            # Essayer plusieurs modèles (comme EXPERTS IA le fait)
+            # Modèle principal : Sonnet 4 (mai 2025)
             models_to_try = [
-                "claude-3-5-sonnet-20241022",  # Sonnet 3.5 
-                "claude-3-sonnet-20240229",    # Sonnet 3
-                "claude-3-haiku-20240307"      # Haiku économique
+                "claude-sonnet-4-20250514",    # Modèle Sonnet 4 principal
+                "claude-3-5-sonnet-20241022",  # Fallback si nécessaire
+                "claude-3-sonnet-20240229",    # Fallback secondaire
             ]
             
             for model in models_to_try:
@@ -501,7 +510,7 @@ Pour questions hors-sujet, réponds: "Je me spécialise exclusivement dans Const
                 "J'ai développé personnellement cet écosystème de 7 applications "
                 "(plus ce portail central) pour révolutionner l'industrie de la construction québécoise.\n\n"
                 "**Comment puis-je vous aider aujourd'hui?**\n"
-                "• 📊 Découvrir EXPERTS AI (54 experts IA)\n"
+                "• 📊 Découvrir EXPERTS AI (60+ experts IA)\n"
                 "• 📐 Explorer TAKEOFF AI (mesure PDF)\n"
                 "• 🏭 Comprendre ERP AI (gestion complète)\n"
                 "• 💰 Calculer votre ROI personnalisé\n"
@@ -1166,7 +1175,7 @@ with col3:
 
 # SECTION ASSISTANT IA DANS LE FOOTER
 # Obtenir le mode actuel
-current_mode = st.session_state.assistant.mode if hasattr(st.session_state.assistant, 'mode') else "Mode Démo 🎯"
+current_mode = st.session_state.assistant.mode if hasattr(st.session_state.assistant, 'mode') else ""
 
 st.markdown(f"""
     <div class="footer-chat-container">
@@ -1176,7 +1185,7 @@ st.markdown(f"""
             </div>
             <div class="chat-status">
                 <span class="status-dot"></span>
-                En ligne - {current_mode}
+                En ligne {current_mode}
             </div>
         </div>
         <p style="color: #6B7280; margin-bottom: 20px;">
@@ -1185,18 +1194,8 @@ st.markdown(f"""
     </div>
 """, unsafe_allow_html=True)
 
-# Indicateur de statut API
-api_status = "active" if st.session_state.assistant.client else "demo"
-api_text = "🤖 Claude API Active" if st.session_state.assistant.client else "💬 Mode Démo"
-api_color = "#10B981" if st.session_state.assistant.client else "#F59E0B"
-
-st.markdown(f"""
-    <div style="text-align: center; margin-bottom: 20px;">
-        <span class="api-status {api_status}" style="background: {'#D1FAE5' if api_status == 'active' else '#FEF3C7'}; color: {'#065F46' if api_status == 'active' else '#92400E'}; padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 500;">
-            {api_text}
-        </span>
-    </div>
-""", unsafe_allow_html=True)
+# Section indicateur API supprimée pour une interface plus épurée
+# L'état est déjà visible dans "En ligne ✅" ou "En ligne"
 
 # Container pour le chat
 with st.container():
@@ -1266,7 +1265,7 @@ with st.container():
         
         # Questions suggérées adaptées au profil Sylvain Leduc
         quick_questions = [
-            "Qu'est-ce que EXPERTS AI avec 54 experts?",
+            "Qu'est-ce que EXPERTS AI avec 60+ experts?",
             "Comment TAKEOFF mesure sur PDF?",
             "Quel est le ROI moyen?",
             "Démonstration personnalisée",
