@@ -13,19 +13,22 @@ st.set_page_config(
     initial_sidebar_state="collapsed"
 )
 
-# Tentative d'import de l'API Claude
+# Import de l'API Claude (comme dans EXPERTS IA)
 try:
-    from anthropic import Anthropic
+    from anthropic import Anthropic, APIError
     ANTHROPIC_AVAILABLE = True
-except ImportError:
+    print("✅ Module anthropic importé avec succès")
+except ImportError as e:
     ANTHROPIC_AVAILABLE = False
-
-# Tentative de chargement des variables d'environnement
+    print(f"⚠️ Module anthropic non disponible: {e}")
+    
+# Chargement des variables d'environnement
 try:
     from dotenv import load_dotenv
     load_dotenv()
+    print("✅ Variables d'environnement chargées")
 except ImportError:
-    pass
+    print("⚠️ python-dotenv non installé, utilisation des variables système")
 
 # Classe Assistant IA avec profil Sylvain Leduc et support Claude API
 class AssistantIA:
@@ -35,23 +38,39 @@ class AssistantIA:
         self.max_exchanges = 10
         self.exchange_count = 0
         self.profile = "Sylvain Leduc - Créateur de Constructo AI"
-        self.api_key = os.getenv("ANTHROPIC_API_KEY", "")
+        
+        # Récupération de la clé API (comme dans EXPERTS IA)
+        self.api_key = os.environ.get("ANTHROPIC_API_KEY") or os.getenv("ANTHROPIC_API_KEY")
         self.client = None
         self.mode = "Mode Démo 🎯"
         
-        # Initialiser Claude si disponible
-        if ANTHROPIC_AVAILABLE and self.api_key:
-            try:
-                self.client = Anthropic(api_key=self.api_key)
-                self.mode = "Claude API ✅"
-                print(f"✅ Claude API initialisée avec succès - Mode intelligent activé")
-                print(f"✅ Clé API détectée: {self.api_key[:10]}...")
-            except Exception as e:
-                print(f"⚠️ Erreur d'initialisation Claude: {e}")
-                self.client = None
-                self.mode = "Mode Démo 🎯"
+        # Initialiser Claude si disponible (méthode EXPERTS IA)
+        if ANTHROPIC_AVAILABLE:
+            if self.api_key:
+                try:
+                    # Initialisation comme dans EXPERTS IA
+                    self.client = Anthropic(api_key=self.api_key)
+                    self.mode = "Claude API ✅"
+                    print(f"✅ Claude API initialisée avec succès")
+                    print(f"✅ Clé API détectée: {self.api_key[:20]}...")
+                    
+                    # Test rapide de l'API
+                    test_response = self.client.messages.create(
+                        model="claude-3-haiku-20240307",  # Modèle le moins cher pour test
+                        messages=[{"role": "user", "content": "test"}],
+                        max_tokens=10
+                    )
+                    print("✅ Test API réussi")
+                    
+                except Exception as e:
+                    print(f"❌ Erreur d'initialisation Claude: {e}")
+                    self.client = None
+                    self.mode = "Mode Démo 🎯"
+            else:
+                print(f"⚠️ Pas de clé API trouvée dans les variables d'environnement")
+                print(f"⚠️ Variables disponibles: {list(os.environ.keys())[:5]}...")
         else:
-            print(f"⚠️ Mode démo - ANTHROPIC_AVAILABLE: {ANTHROPIC_AVAILABLE}, API_KEY présente: {bool(self.api_key)}")
+            print(f"⚠️ Module anthropic non disponible")
     
     def get_system_prompt(self):
         """Retourne le prompt système pour Claude"""
@@ -112,42 +131,33 @@ Pour questions hors-sujet, réponds: "Je me spécialise exclusivement dans Const
                 "content": user_message
             })
             
-            # Appel à Claude avec le modèle Sonnet le plus récent
-            response = self.client.messages.create(
-                model="claude-3-5-sonnet-20241022",  # Modèle Sonnet 3.5 le plus récent
-                system=self.get_system_prompt(),
-                messages=messages,
-                max_tokens=500,  # Augmenté pour des réponses plus complètes
-                temperature=0.7
-            )
+            # Essayer plusieurs modèles (comme EXPERTS IA le fait)
+            models_to_try = [
+                "claude-3-5-sonnet-20241022",  # Sonnet 3.5 
+                "claude-3-sonnet-20240229",    # Sonnet 3
+                "claude-3-haiku-20240307"      # Haiku économique
+            ]
             
-            return response.content[0].text
+            for model in models_to_try:
+                try:
+                    response = self.client.messages.create(
+                        model=model,
+                        system=self.get_system_prompt(),
+                        messages=messages,
+                        max_tokens=500,
+                        temperature=0.7
+                    )
+                    print(f"✅ Réponse obtenue avec {model}")
+                    return response.content[0].text
+                except Exception as model_error:
+                    print(f"⚠️ Erreur avec {model}: {str(model_error)[:100]}")
+                    continue
+            
+            # Si tous échouent
+            return None
             
         except Exception as e:
-            print(f"Erreur Claude API: {e}")
-            # Si le modèle demandé n'existe pas, essayer avec des modèles de fallback
-            if "model" in str(e).lower() or "does not exist" in str(e).lower():
-                fallback_models = [
-                    "claude-3-5-sonnet-20241022",  # Fallback vers Sonnet 3.5
-                    "claude-3-sonnet-20240229",    # Fallback vers Sonnet 3
-                    "claude-3-haiku-20240307"      # Fallback final vers Haiku
-                ]
-                
-                for fallback_model in fallback_models:
-                    try:
-                        print(f"Tentative avec modèle de fallback: {fallback_model}")
-                        response = self.client.messages.create(
-                            model=fallback_model,
-                            system=self.get_system_prompt(),
-                            messages=messages,
-                            max_tokens=300,
-                            temperature=0.7
-                        )
-                        return response.content[0].text
-                    except:
-                        continue
-                        
-                return None
+            print(f"❌ Erreur générale Claude API: {str(e)[:200]}")
             return None
     
     def get_response(self, user_message: str, conversation_history: list = None) -> str:
