@@ -1,0 +1,47 @@
+# render_deploy.yaml - Configuration optimale pour Render
+services:
+  - type: web
+    name: portail-constructoai-assistant
+    runtime: python
+    region: oregon # ou "frankfurt" pour l'Europe
+    plan: free # ou "starter" pour plus de ressources
+    
+    # Commande de build
+    buildCommand: |
+      pip install --upgrade pip
+      pip install -r requirements_render.txt
+    
+    # Commande de démarrage
+    startCommand: streamlit run portal_with_claude_api.py --server.port=$PORT --server.address=0.0.0.0 --server.enableCORS=true --server.enableXsrfProtection=false
+    
+    # Variables d'environnement
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.0
+      
+      # Clé API Claude (optionnel - ajouter dans Render Dashboard)
+      # - key: ANTHROPIC_API_KEY
+      #   sync: false  # Définir manuellement dans Render
+      
+      # Configuration Streamlit
+      - key: STREAMLIT_SERVER_HEADLESS
+        value: true
+      
+      - key: STREAMLIT_SERVER_ENABLE_CORS
+        value: true
+      
+      - key: STREAMLIT_SERVER_ENABLE_XSRF_PROTECTION
+        value: false
+      
+      - key: STREAMLIT_BROWSER_GATHER_USAGE_STATS
+        value: false
+      
+      # Mode de l'assistant
+      - key: ASSISTANT_MODE
+        value: production
+    
+    # Health check
+    healthCheckPath: /
+    
+    # Auto-deploy depuis GitHub
+    autoDeploy: true

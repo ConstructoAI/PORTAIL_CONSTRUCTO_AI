@@ -28,7 +28,7 @@ Système d'estimation de construction avec IA Claude
 
 ### 🏭 **ERP AI** - [erp-ai.constructoai.ca](https://erp-ai.constructoai.ca/)
 Solution ERP industrielle complète
-- 61 postes de travail configurés (Soudage, CNC, Assemblage)
+- 120 postes de travail configurés (Soudage, CNC, Assemblage)
 - TimeTracker intégré avec synchronisation temps réel
 - CRM et RH avec gestion des compétences
 - Multi-vues: Dashboard, Kanban, Gantt, Calendrier

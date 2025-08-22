@@ -1,0 +1,23 @@
+# requirements_render.txt - Dépendances pour déploiement Render
+# Version optimisée pour production
+
+# Framework principal
+streamlit==1.48.1
+
+# Claude API (optionnel - fonctionnera en mode démo sans clé)
+anthropic==0.21.3
+python-dotenv==1.0.0
+
+# Dépendances Streamlit
+altair<6
+pandas<3
+numpy<2
+pillow<11
+protobuf<5
+pyarrow<15
+requests<3
+rich<14
+toml<2
+typing-extensions<5
+tzdata<2025
+validators<1

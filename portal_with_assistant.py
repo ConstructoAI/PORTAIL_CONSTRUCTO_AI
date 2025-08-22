@@ -1,4 +1,4 @@
-# portal.py - Portail Constructo AI
+# portal_with_assistant.py - Portail Constructo AI avec Assistant IA intégré
 import streamlit as st
 import time
 from datetime import datetime
@@ -12,6 +12,199 @@ st.set_page_config(
     layout="wide",
     initial_sidebar_state="collapsed"
 )
+
+# Classe Assistant IA avec profil Sylvain Leduc
+class AssistantIA:
+    """Assistant IA Sylvain Leduc pour support client Constructo AI"""
+    
+    def __init__(self):
+        self.max_exchanges = 10  # Maximum pour économiser l'API
+        self.exchange_count = 0
+        self.profile = "Sylvain Leduc - Créateur de Constructo AI"
+    
+    def get_response(self, user_message: str) -> str:
+        """Génère une réponse en tant que Sylvain Leduc"""
+        user_msg_lower = user_message.lower()
+        
+        # Vérifier le compteur d'échanges
+        self.exchange_count += 1
+        if self.exchange_count > self.max_exchanges:
+            return ("🎯 **Nous avons bien couvert Constructo AI!**\n\n"
+                   "Pour une démonstration personnalisée ou plus de détails:\n"
+                   "📞 Appelez-moi au 514-820-1972\n"
+                   "📧 info@constructoai.ca\n\n"
+                   "À bientôt pour transformer votre entreprise! - Sylvain Leduc")
+        
+        # Détecter les questions hors-sujet et rediriger
+        offtopic_keywords = ["météo", "sport", "politique", "cuisine", "voyage", "film", "musique", "jeu"]
+        if any(word in user_msg_lower for word in offtopic_keywords):
+            return ("💡 **Je comprends votre question, mais en tant que créateur de Constructo AI,** "
+                   "je me spécialise exclusivement dans nos 8 applications pour la construction.\n\n"
+                   "Revenons à comment Constructo AI peut transformer votre entreprise! "
+                   "Quelle application vous intéresse le plus?")
+        
+        # Réponses spécifiques aux applications
+        if "experts" in user_msg_lower or "expert" in user_msg_lower:
+            return ("🏗️ **J'ai développé EXPERTS AI avec 54 profils d'experts!**\n\n"
+                   "• Tous les métiers: architecte, ingénieur, électricien, plombier\n"
+                   "• Données actualisées 2025 avec prix Québec\n"
+                   "• Estimations de 250$ à 487$/pi² selon complexité\n"
+                   "• Support 27 formats de fichiers\n"
+                   "• Recherche web contextuelle intégrée\n\n"
+                   "C'est notre application phare! Voulez-vous une démonstration?")
+        
+        elif "takeoff" in user_msg_lower:
+            return ("📐 **TAKEOFF AI - Mon système de mesure révolutionnaire!**\n\n"
+                   "• 5 outils de mesure sophistiqués sur PDF\n"
+                   "• Mode orthogonal 8 directions pour précision maximale\n"
+                   "• Catalogue produits avec prix Québec 2025\n"
+                   "• Calibration dynamique pixel/unité réelle\n"
+                   "• 17 viewers PDF optimisés différents\n\n"
+                   "Nos clients économisent 20h/semaine sur les estimations!")
+        
+        elif "erp" in user_msg_lower:
+            return ("🏭 **ERP AI - J'ai conçu 120 postes de travail préconfigurés!**\n\n"
+                   "• Soudage, CNC, assemblage, et plus\n"
+                   "• TimeTracker temps réel avec synchronisation\n"
+                   "• 25+ phases de construction détaillées\n"
+                   "• Workflow BROUILLON → VALIDÉ → EN COURS → TERMINÉ\n"
+                   "• Conformité normes CSA/BNQ intégrée\n\n"
+                   "Solution complète pour l'industrie 4.0!")
+        
+        elif "b2b" in user_msg_lower:
+            return ("🤝 **B2B CONSTRUCTION - Ma marketplace professionnelle!**\n\n"
+                   "• Workflow d'approbation sophistiqué en 5 étapes\n"
+                   "• Validation RBQ automatique et instantanée\n"
+                   "• Système de notation multi-critères pondéré\n"
+                   "• 15 tables de base de données optimisées\n"
+                   "• Sécurité renforcée avec bcrypt et audit trail\n\n"
+                   "350+ entreprises RBQ actives l'utilisent déjà!")
+        
+        elif "seaop" in user_msg_lower or "appel" in user_msg_lower and "offre" in user_msg_lower:
+            return ("📊 **SEAOP - Système d'appels d'offres publics!**\n\n"
+                   "• Calcul automatique d'urgence (🟢🟡🟠🔴)\n"
+                   "• Chat communautaire style Facebook avec likes\n"
+                   "• Conformité Loi sur les architectes du Québec\n"
+                   "• Tarification automatique services professionnels\n"
+                   "• Badges utilisateurs (Premium, RBQ Vérifié)\n\n"
+                   "Parfait pour les projets publics québécois!")
+        
+        elif "c2b" in user_msg_lower:
+            return ("🏢 **C2B PORTAIL - Solution mono-entreprise!**\n\n"
+                   "• Portail personnalisé aux couleurs de l'entreprise\n"
+                   "• Configuration simple pour PME\n"
+                   "• Gestion centralisée des demandes clients\n"
+                   "• Interface épurée et intuitive\n"
+                   "• Déploiement rapide sans configuration complexe\n\n"
+                   "Idéal pour les entrepreneurs individuels!")
+        
+        elif "prix" in user_msg_lower or "coût" in user_msg_lower or "tarif" in user_msg_lower:
+            return ("💰 **ROI moyen en moins de 30 jours!**\n\n"
+                   "• Économies moyennes: 20h/semaine (1,000$/semaine)\n"
+                   "• Productivité: +30-45% dès le premier mois\n"
+                   "• 3.5M$ économisés collectivement par nos utilisateurs\n"
+                   "• Garantie satisfaction 30 jours\n\n"
+                   "L'investissement se rembourse en moins d'une semaine! "
+                   "Contactez-moi pour un calcul de ROI personnalisé: 514-820-1972")
+        
+        elif "sécur" in user_msg_lower or "donnée" in user_msg_lower:
+            return ("🔒 **Sécurité de niveau bancaire!**\n\n"
+                   "• Chiffrement SSL/TLS pour toutes les données\n"
+                   "• Conformité Loi 25 (protection renseignements personnels)\n"
+                   "• Sauvegardes automatiques quotidiennes\n"
+                   "• Hébergement sécurisé Render.com\n"
+                   "• Vos données vous appartiennent à 100%\n\n"
+                   "J'ai conçu le système avec la sécurité comme priorité!")
+        
+        elif "formation" in user_msg_lower or "support" in user_msg_lower or "aide" in user_msg_lower:
+            return ("🎓 **Formation et support inclus!**\n\n"
+                   "• Formation personnalisée gratuite (valeur 2,500$)\n"
+                   "• Assistant IA disponible 24/7\n"
+                   "• Opérationnel en moyenne en 2 heures\n"
+                   "• Support email prioritaire (plans Pro)\n"
+                   "• Documentation complète en français\n\n"
+                   "Je m'assure personnellement que vous réussissiez!")
+        
+        elif "concurrent" in user_msg_lower or "compar" in user_msg_lower:
+            return ("🏆 **Constructo AI se distingue par:**\n\n"
+                   "• 54 experts IA vs 0-5 chez les concurrents\n"
+                   "• Prix 2025 Québec actualisés vs données génériques\n"
+                   "• 8 applications intégrées vs solutions fragmentées\n"
+                   "• Conformité RBQ/CCQ native vs adaptations\n"
+                   "• Moins cher que 2-3 logiciels séparés\n\n"
+                   "Quelle fonctionnalité recherchez-vous précisément?")
+        
+        elif "contact" in user_msg_lower or "appel" in user_msg_lower or "démo" in user_msg_lower:
+            return ("📞 **Contactez-moi directement!**\n\n"
+                   "**Sylvain Leduc** - Créateur de Constructo AI\n"
+                   "📱 514-820-1972\n"
+                   "📧 info@constructoai.ca\n"
+                   "🌐 www.constructoai.ca\n"
+                   "📍 Farnham, Québec\n\n"
+                   "Démonstration personnalisée gratuite disponible!")
+        
+        elif "sylvain" in user_msg_lower or "vous" in user_msg_lower and any(word in user_msg_lower for word in ["qui", "parlez", "présent"]):
+            return ("👨‍💼 **Je suis Sylvain Leduc, créateur de Constructo AI!**\n\n"
+                   "Passionné par l'innovation dans la construction, j'ai développé personnellement "
+                   "cet écosystème complet de 8 applications pour transformer l'industrie québécoise.\n\n"
+                   "**Mon expertise:**\n"
+                   "• Concepteur de solutions IA pour la construction\n"
+                   "• Expert en technologies Streamlit et Claude API\n"
+                   "• Spécialiste des normes RBQ/CCQ québécoises\n\n"
+                   "**Ma mission:** Permettre aux entreprises de construction d'économiser "
+                   "20h/semaine et d'augmenter leur productivité de 30-45%!\n\n"
+                   "Quelle solution puis-je vous présenter?")
+        
+        elif any(word in user_msg_lower for word in ["bonjour", "salut", "hello", "allo"]):
+            return self.get_greeting()
+        
+        elif any(word in user_msg_lower for word in ["merci", "parfait", "super", "excellent", "bye", "aurevoir", "à bientôt"]):
+            return ("😊 **Parfait! Ce fut un plaisir!**\n\n"
+                   "Si vous avez d'autres questions sur Constructo AI, je suis là.\n"
+                   "Pour une démonstration personnalisée: 514-820-1972\n\n"
+                   "Bonne journée et au plaisir de vous accompagner dans votre "
+                   "transformation numérique! 🏗️\n\n- Sylvain Leduc")
+        
+        # Questions techniques construction -> rediriger vers EXPERTS AI
+        construction_keywords = ["béton", "fondation", "structure", "électri", "plomb", "toiture", "isolation", "code", "norme"]
+        if any(word in user_msg_lower for word in construction_keywords):
+            return ("🔧 **Excellente question technique!**\n\n"
+                   f"Notre module EXPERTS AI a justement un expert qui peut vous aider avec ça. "
+                   f"Avec 54 profils spécialisés, vous aurez une réponse détaillée et conforme aux normes québécoises.\n\n"
+                   f"Voulez-vous en savoir plus sur EXPERTS AI?")
+        
+        # Réponse par défaut
+        else:
+            return ("💡 **Je suis Sylvain Leduc, créateur de Constructo AI!**\n\n"
+                   "J'ai développé 8 applications pour révolutionner la construction:\n\n"
+                   "• **EXPERTS AI** - 54 experts IA spécialisés\n"
+                   "• **TAKEOFF AI** - Mesure et estimation sur PDF\n"
+                   "• **ERP AI** - 120 postes de travail configurés\n"
+                   "• **B2B** - Marketplace avec validation RBQ\n"
+                   "• **SEAOP** - Appels d'offres publics\n"
+                   "• **C2B** - Portail mono-entreprise\n"
+                   "• **FEUILLE SOUMISSION** - Générateur de devis\n"
+                   "• **PORTAIL** - Hub central unifié\n\n"
+                   "Quelle solution vous intéresse pour votre entreprise?")
+    
+    def get_greeting(self) -> str:
+        """Message d'accueil de Sylvain Leduc"""
+        return ("🏗️ **Bonjour! Je suis Sylvain Leduc, créateur de Constructo AI!**\n\n"
+                "J'ai développé personnellement cet écosystème de 8 applications "
+                "pour révolutionner l'industrie de la construction québécoise.\n\n"
+                "**Comment puis-je vous aider aujourd'hui?**\n"
+                "• 📊 Découvrir EXPERTS AI (54 experts IA)\n"
+                "• 📐 Explorer TAKEOFF AI (mesure PDF)\n"
+                "• 🏭 Comprendre ERP AI (gestion complète)\n"
+                "• 💰 Calculer votre ROI personnalisé\n"
+                "• 📞 Planifier une démonstration\n\n"
+                "Quelle application vous intéresse le plus?")
+
+# Initialisation de l'assistant
+if 'assistant' not in st.session_state:
+    st.session_state.assistant = AssistantIA()
+    st.session_state.chat_messages = []
+    st.session_state.chat_expanded = False
 
 # Fonction pour charger le CSS local
 def load_css(file_name):
@@ -28,7 +221,161 @@ def load_css(file_name):
 # Chargement du CSS
 load_css("style_portal.css")
 
-# CSS Responsive pour mobile
+# CSS supplémentaire pour l'assistant dans le footer
+st.markdown("""
+<style>
+    /* Assistant Chat Button */
+    .chat-button {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        width: 60px;
+        height: 60px;
+        background: linear-gradient(135deg, #3B82F6 0%, #1E40AF 100%);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+        z-index: 1000;
+        transition: all 0.3s ease;
+    }
+    
+    .chat-button:hover {
+        transform: scale(1.1);
+        box-shadow: 0 6px 20px rgba(59, 130, 246, 0.6);
+    }
+    
+    .chat-button-icon {
+        font-size: 28px;
+        filter: brightness(0) invert(1);
+    }
+    
+    /* Chat Container dans le footer */
+    .footer-chat-container {
+        background: linear-gradient(135deg, #F0F9FF 0%, #E0F2FE 100%);
+        border-top: 3px solid #3B82F6;
+        border-radius: 20px 20px 0 0;
+        padding: 30px;
+        margin-top: 50px;
+        box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.1);
+    }
+    
+    .chat-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 20px;
+        padding-bottom: 15px;
+        border-bottom: 2px solid #E0F2FE;
+    }
+    
+    .chat-title {
+        font-size: 24px;
+        font-weight: 700;
+        color: #1E40AF;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+    
+    .chat-status {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        color: #10B981;
+        font-weight: 500;
+    }
+    
+    .status-dot {
+        width: 10px;
+        height: 10px;
+        background: #10B981;
+        border-radius: 50%;
+        animation: pulse 2s infinite;
+    }
+    
+    @keyframes pulse {
+        0% { opacity: 1; }
+        50% { opacity: 0.5; }
+        100% { opacity: 1; }
+    }
+    
+    /* Messages */
+    .chat-message {
+        margin: 15px 0;
+        animation: slideIn 0.3s ease;
+    }
+    
+    @keyframes slideIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .user-message {
+        background: white;
+        border-left: 4px solid #3B82F6;
+        padding: 12px 16px;
+        border-radius: 8px;
+        margin-left: 20%;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+    
+    .assistant-message {
+        background: linear-gradient(135deg, #FFFFFF 0%, #F0F9FF 100%);
+        border-left: 4px solid #10B981;
+        padding: 12px 16px;
+        border-radius: 8px;
+        margin-right: 20%;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Quick Actions */
+    .quick-actions {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin: 20px 0;
+    }
+    
+    .quick-action-btn {
+        background: white;
+        border: 2px solid #E0F2FE;
+        padding: 8px 16px;
+        border-radius: 20px;
+        color: #3B82F6;
+        font-weight: 500;
+        transition: all 0.3s;
+        cursor: pointer;
+    }
+    
+    .quick-action-btn:hover {
+        background: #3B82F6;
+        color: white;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+    }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+        .footer-chat-container {
+            padding: 20px 15px;
+        }
+        
+        .user-message, .assistant-message {
+            margin-left: 0;
+            margin-right: 0;
+        }
+        
+        .chat-title {
+            font-size: 20px;
+        }
+    }
+</style>
+""", unsafe_allow_html=True)
+
+# CSS Responsive pour mobile (existant)
 st.markdown("""
 <style>
     /* Responsive Design pour Mobile */
@@ -79,7 +426,7 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-# Données des applications
+# Données des applications (existantes)
 APPLICATIONS = [
     {
         "id": "experts-ai",
@@ -174,7 +521,7 @@ APPLICATIONS = [
     }
 ]
 
-# Statistiques globales (simulées ou récupérables d'une API)
+# Statistiques globales
 STATS = {
     "users": "2,500+",
     "projects": "15,000+",
@@ -187,8 +534,6 @@ if 'selected_category' not in st.session_state:
     st.session_state.selected_category = "all"
 if 'search_query' not in st.session_state:
     st.session_state.search_query = ""
-if 'show_details' not in st.session_state:
-    st.session_state.show_details = {}
 
 # Header principal avec animation
 st.markdown("""
@@ -490,7 +835,113 @@ with col3:
         </div>
     """, unsafe_allow_html=True)
 
-# Footer
+# SECTION ASSISTANT IA DANS LE FOOTER
+st.markdown("""
+    <div class="footer-chat-container">
+        <div class="chat-header">
+            <div class="chat-title">
+                💬 Chat avec Sylvain Leduc - Créateur de Constructo AI
+            </div>
+            <div class="chat-status">
+                <span class="status-dot"></span>
+                En ligne - Disponible 24/7
+            </div>
+        </div>
+        <p style="color: #6B7280; margin-bottom: 20px;">
+            Bonjour! Je suis Sylvain Leduc, créateur de Constructo AI. Comment puis-je vous aider avec nos 8 applications?
+        </p>
+    </div>
+""", unsafe_allow_html=True)
+
+# Container pour le chat
+with st.container():
+    # Colonnes pour le chat
+    col_chat, col_actions = st.columns([2, 1])
+    
+    with col_chat:
+        # Zone des messages
+        st.markdown("#### 💬 Conversation")
+        
+        # Afficher le message d'accueil si c'est la première fois
+        if not st.session_state.chat_messages:
+            greeting = st.session_state.assistant.get_greeting()
+            st.session_state.chat_messages.append({"role": "assistant", "content": greeting})
+        
+        # Container pour les messages avec scroll
+        messages_container = st.container(height=300)
+        with messages_container:
+            for message in st.session_state.chat_messages:
+                if message["role"] == "user":
+                    st.markdown(f"""
+                        <div class="user-message">
+                            <strong style="color: #3B82F6;">Vous:</strong><br>
+                            {message["content"]}
+                        </div>
+                    """, unsafe_allow_html=True)
+                else:
+                    st.markdown(f"""
+                        <div class="assistant-message">
+                            <strong style="color: #10B981;">Sylvain Leduc:</strong><br>
+                            {message["content"]}
+                        </div>
+                    """, unsafe_allow_html=True)
+        
+        # Zone de saisie
+        user_input = st.text_input(
+            "Tapez votre message...",
+            placeholder="Ex: Qu'est-ce que EXPERTS AI?",
+            key="user_chat_input"
+        )
+        
+        col_send, col_clear = st.columns([1, 1])
+        with col_send:
+            if st.button("📤 Envoyer", type="primary", use_container_width=True):
+                if user_input and user_input.strip():
+                    # Ajouter le message utilisateur
+                    st.session_state.chat_messages.append({"role": "user", "content": user_input})
+                    
+                    # Obtenir la réponse
+                    response = st.session_state.assistant.get_response(user_input)
+                    st.session_state.chat_messages.append({"role": "assistant", "content": response})
+                    
+                    # Rafraîchir la page
+                    st.rerun()
+        
+        with col_clear:
+            if st.button("🔄 Nouvelle conversation", use_container_width=True):
+                st.session_state.chat_messages = []
+                st.session_state.assistant = AssistantIA()
+                st.rerun()
+    
+    with col_actions:
+        st.markdown("#### ⚡ Questions rapides")
+        
+        # Questions suggérées adaptées au profil Sylvain Leduc
+        quick_questions = [
+            "Qu'est-ce que EXPERTS AI avec 54 experts?",
+            "Comment TAKEOFF mesure sur PDF?",
+            "Quel est le ROI moyen?",
+            "Démonstration personnalisée",
+            "Parlez-moi de vous Sylvain"
+        ]
+        
+        for question in quick_questions:
+            if st.button(f"💡 {question}", key=f"quick_{question}", use_container_width=True):
+                # Ajouter la question et obtenir la réponse
+                st.session_state.chat_messages.append({"role": "user", "content": question})
+                response = st.session_state.assistant.get_response(question)
+                st.session_state.chat_messages.append({"role": "assistant", "content": response})
+                st.rerun()
+        
+        st.markdown("---")
+        st.markdown("#### 📞 Contact direct")
+        st.info("""
+            **Téléphone:** 514-820-1972  
+            **Email:** info@constructoai.ca  
+            **Horaires:** 24/7
+        """)
+
+# Footer final
 st.markdown("""
     <div style="background: white; border-top: 2px solid #e5e7eb; margin-top: 60px; padding: 40px 20px 20px 20px;">
         <div style="max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 40px;">
@@ -536,21 +987,3 @@ with placeholder.container():
     """, unsafe_allow_html=True)
     time.sleep(0.5)
 placeholder.empty()
-
-# JavaScript pour animations supplémentaires
-st.markdown("""
-    <script>
-    // Animation des cartes au survol
-    document.addEventListener('DOMContentLoaded', function() {
-        const cards = document.querySelectorAll('.app-card');
-        cards.forEach(card => {
-            card.addEventListener('mouseenter', function() {
-                this.style.transform = 'translateY(-10px) scale(1.02)';
-            });
-            card.addEventListener('mouseleave', function() {
-                this.style.transform = 'translateY(0) scale(1)';
-            });
-        });
-    });
-    </script>
-""", unsafe_allow_html=True)
