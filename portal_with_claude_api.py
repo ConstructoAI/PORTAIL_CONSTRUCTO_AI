@@ -44,11 +44,14 @@ class AssistantIA:
             try:
                 self.client = Anthropic(api_key=self.api_key)
                 self.mode = "Claude API ✅"
-                print("✅ Claude API initialisée avec succès - Mode intelligent activé")
+                print(f"✅ Claude API initialisée avec succès - Mode intelligent activé")
+                print(f"✅ Clé API détectée: {self.api_key[:10]}...")
             except Exception as e:
                 print(f"⚠️ Erreur d'initialisation Claude: {e}")
                 self.client = None
                 self.mode = "Mode Démo 🎯"
+        else:
+            print(f"⚠️ Mode démo - ANTHROPIC_AVAILABLE: {ANTHROPIC_AVAILABLE}, API_KEY présente: {bool(self.api_key)}")
     
     def get_system_prompt(self):
         """Retourne le prompt système pour Claude"""
@@ -1152,7 +1155,10 @@ with col3:
     """, unsafe_allow_html=True)
 
 # SECTION ASSISTANT IA DANS LE FOOTER
-st.markdown("""
+# Obtenir le mode actuel
+current_mode = st.session_state.assistant.mode if hasattr(st.session_state.assistant, 'mode') else "Mode Démo 🎯"
+
+st.markdown(f"""
     <div class="footer-chat-container">
         <div class="chat-header">
             <div class="chat-title">
@@ -1160,7 +1166,7 @@ st.markdown("""
             </div>
             <div class="chat-status">
                 <span class="status-dot"></span>
-                En ligne - {st.session_state.assistant.mode}
+                En ligne - {current_mode}
             </div>
         </div>
         <p style="color: #6B7280; margin-bottom: 20px;">
